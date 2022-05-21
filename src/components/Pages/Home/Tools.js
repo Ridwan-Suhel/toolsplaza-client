@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import Tool from "./Tool";
 
 const Tools = () => {
@@ -11,12 +12,11 @@ const Tools = () => {
   return (
     <div className="py-20">
       <div className="container mx-auto px-4">
-        <div className="title text-neutral mb-16">
-          <h2 className="text-4xl">Our Tools</h2>
-          <p className="text-lg uppercase mt-3">
-            Check our best tools in this recent year.
-          </p>
-        </div>
+        <SectionTitle
+          titleWrapperClasses="title mb-16 text-neutral"
+          shortHeading="Our Tools"
+          shortTitle="Check our best tools in this recent year."
+        />
         <div className="tools-wrapper">
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:grid-cols-2 gap-4">
             {/* single card  */}

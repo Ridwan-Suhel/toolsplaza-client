@@ -13,8 +13,8 @@ const Banner = () => {
       }}
     >
       <div className="container mx-auto px-4">
-        <div class="">
-          <div class="hero-content flex-col lg:flex-row-reverse">
+        <div className="">
+          <div className="hero-content flex-col lg:flex-row-reverse">
             {/* <div className="lg:w-1/3">
               <div className="bg-accent text-right">
                 <h2>Lorem ipsum dolor sit.</h2>
@@ -24,15 +24,15 @@ const Banner = () => {
             </div> */}
             <div className="text-white lg:w-2/3">
               <p className="text-lg text-secondary">BORN TO ROAR...</p>
-              <h1 class="text-5xl font-bold">
+              <h1 className="text-5xl font-bold">
                 ToolsPlaza More Than a Products.{" "}
               </h1>
-              <p class="py-6">
+              <p className="py-6">
                 We live breathe and eat tools. Toolsplaza is the leading home
                 essential tools manufacturers in Bangladesh. Our mission to
                 continue to evolve and not be restricted by limitations.
               </p>
-              <button class="btn btn-primary">Learn More</button>
+              <button className="btn btn-primary">Learn More</button>
             </div>
           </div>
         </div>

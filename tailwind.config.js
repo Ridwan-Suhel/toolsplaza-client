@@ -7,7 +7,7 @@ module.exports = {
     themes: [
       {
         toolsplaza: {
-          primary: "#6E46F1",
+          primary: "#4411E8",
           secondary: "#3498db",
           accent: "#37cdbe",
           neutral: "#34495e",

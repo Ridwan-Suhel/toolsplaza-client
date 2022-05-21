@@ -1,31 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import Tool from "./Tool";
 
 const Tools = () => {
+  const [tools, setTools] = useState([]);
+
+  fetch("data.json")
+    .then((res) => res.json())
+    .then((data) => setTools(data.slice(0, 6)));
+
   return (
     <div className="py-20">
       <div className="container mx-auto px-4">
-        <div className="title text-neutral ">
+        <div className="title text-neutral mb-16">
           <h2 className="text-4xl">Our Tools</h2>
           <p className="text-lg">Check our best tools in this recent year.</p>
         </div>
         <div className="tools-wrapper">
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:grid-cols-2 gap-4">
             {/* single card  */}
-            <div class="card w-96 bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  src="https://api.lorem.space/image/shoes?w=400&h=225"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div class="card-actions justify-end">
-                  <button class="btn btn-primary">Buy Now</button>
-                </div>
-              </div>
-            </div>
+            {tools.map((tool) => (
+              <Tool key={tool._id} tool={tool} />
+            ))}
           </div>
         </div>
       </div>

@@ -60,7 +60,7 @@ const Purchase = () => {
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control mb-5">
                       <input
-                        placeholder="Name"
+                        placeholder="Your Name"
                         class="input input-bordered w-full"
                         {...register("name", { required: true })}
                       />
@@ -135,6 +135,13 @@ const Purchase = () => {
                           Increase
                         </button>
                         {/* {errors.lastName && "Last name is required"} */}
+                      </div>
+
+                      <div className="mb-5 lg:col-span-1 ">
+                        <p className="border p-3 rounded border-primary">
+                          <span>TOTAL PRICE - </span>{" "}
+                          <span className="font-bold">100</span>
+                        </p>
                       </div>
                     </div>
 

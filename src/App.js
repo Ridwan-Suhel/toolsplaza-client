@@ -8,6 +8,8 @@ import NotFound from "./components/Pages/NotFound/NotFound";
 import Purchase from "./components/Pages/Purchase/Purchase";
 import Signup from "./components/Pages/Signup/Signup";
 import RequireAuth from "./components/Shared/RequireAuth/RequireAuth";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -37,6 +39,7 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

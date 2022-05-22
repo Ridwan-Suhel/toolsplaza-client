@@ -1,15 +1,22 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading/Loading";
 import auth from "../../../firebase.init";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location?.state?.from?.pathname || "/";
+
+  const [email, setEmail] = useState("");
+
   const {
     register,
     formState: { errors },
@@ -19,13 +26,8 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const onSubmit = (data) => {
-    signInWithEmailAndPassword(data.email, data.password);
-  };
-
-  // if (user) {
-  //   navigate("/home");
-  // }
+  const [sendPasswordResetEmail, sending, ResetPassError] =
+    useSendPasswordResetEmail(auth);
 
   useEffect(() => {
     if (user) {
@@ -35,10 +37,12 @@ const Login = () => {
 
   let errMsg;
 
-  if (error) {
+  if (error || ResetPassError) {
+    console.log(ResetPassError);
     errMsg = (
       <p className="text-red-500 my-3">
         <small>{error?.message}</small>
+        <small>{ResetPassError?.message}</small>
       </p>
     );
   }
@@ -66,6 +70,10 @@ const Login = () => {
     );
   }
 
+  const onSubmit = (data) => {
+    signInWithEmailAndPassword(data.email, data.password);
+  };
+
   if (loading) {
     return <Loading></Loading>;
   }
@@ -89,6 +97,7 @@ const Login = () => {
                     type="email"
                     className="input input-bordered w-full"
                     {...register("email", {
+                      onChange: (e) => setEmail(e.target.value),
                       required: {
                         value: true,
                         message: "Email is required",
@@ -155,7 +164,17 @@ const Login = () => {
                 </div>
                 {/* {====================Reset password btn =========================
                   ============================================================} */}
-                <span className="btn pl-0 btn-link text-accent">
+                <span
+                  className="btn pl-0 btn-link text-accent"
+                  onClick={async () => {
+                    await sendPasswordResetEmail(email);
+                    if (email === "") {
+                      toast.error("Something is wrong");
+                    } else {
+                      toast("Reset your password. please check email.");
+                    }
+                  }}
+                >
                   Forget password?
                 </span>
                 {/* {=============================================
@@ -187,6 +206,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 };

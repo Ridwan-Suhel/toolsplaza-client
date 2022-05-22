@@ -19,6 +19,8 @@ const Purchase = () => {
     data: tools,
   } = useQuery("tools", () => fetch(url).then((res) => res.json()));
 
+  console.log(tools);
+
   if (isLoading) {
     return <Loading></Loading>;
   }
@@ -40,10 +42,12 @@ const Purchase = () => {
               <div class="card-body">
                 <h2 class="card-title">{tools.name}</h2>
 
-                <p>Minimun Order: 10</p>
-                <p className="text-lg">Unit Price: $30</p>
+                <p>Minimun Order: {tools.minOrderQuantity}</p>
+                <p className="text-lg">Unit Price: ${tools.price}</p>
                 <div class="card-actions justify-end">
-                  <div class="badge badge-outline">34 available</div>
+                  <div class="badge badge-outline">
+                    {tools.availableQuantity} available
+                  </div>
                 </div>
               </div>
             </div>

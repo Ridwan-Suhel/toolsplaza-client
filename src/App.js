@@ -7,22 +7,30 @@ import Blog from "./components/Pages/Blog/Blog";
 import NotFound from "./components/Pages/NotFound/NotFound";
 import Purchase from "./components/Pages/Purchase/Purchase";
 import Signup from "./components/Pages/Signup/Signup";
+import RequireAuth from "./components/Shared/RequireAuth/RequireAuth";
 
 function App() {
   return (
-    <>
+    <div className="">
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route
+          path="/blog"
+          element={
+            <RequireAuth>
+              <Blog />
+            </RequireAuth>
+          }
+        />
         <Route path="/purchase/:id" element={<Purchase />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

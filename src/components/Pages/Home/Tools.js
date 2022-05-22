@@ -5,7 +5,7 @@ import Tool from "./Tool";
 const Tools = () => {
   const [tools, setTools] = useState([]);
 
-  fetch("data.json")
+  fetch("http://localhost:5000/tools")
     .then((res) => res.json())
     .then((data) => setTools(data.slice(0, 6)));
 

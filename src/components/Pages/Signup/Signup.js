@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ const Signup = () => {
   };
 
   return (
-    <section>
+    <section className="py-10">
       <div className="container ">
         <div className="flex min-h-screen items-center justify-center">
           <div className="card lg:w-5/12 bg-base-100 shadow-xl border">
@@ -181,6 +182,7 @@ const Signup = () => {
                   <div className="divider">OR</div>
                 </div>
               </form>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading/Loading";
 import auth from "../../../firebase.init";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ const Login = () => {
   }
 
   return (
-    <section>
+    <section className="py-10">
       <div className="container ">
         <div className="flex min-h-screen items-center justify-center">
           <div className="card lg:w-5/12 bg-base-100 shadow-xl border">
@@ -173,6 +174,7 @@ const Login = () => {
                   <div className="divider">OR</div>
                 </div>
               </form>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>

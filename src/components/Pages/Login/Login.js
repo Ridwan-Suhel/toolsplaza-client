@@ -1,13 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading/Loading";
 import auth from "../../../firebase.init";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const location = useLocation();
+  let from = location?.state?.from?.pathname || "/";
   const {
     register,
     formState: { errors },
@@ -21,9 +23,15 @@ const Login = () => {
     signInWithEmailAndPassword(data.email, data.password);
   };
 
-  if (user) {
-    navigate("/home");
-  }
+  // if (user) {
+  //   navigate("/home");
+  // }
+
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, from, navigate]);
 
   let errMsg;
 

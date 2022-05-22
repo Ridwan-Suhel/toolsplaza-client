@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
@@ -19,6 +22,8 @@ const Signup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
+  const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
+
   useEffect(() => {
     if (user) {
       navigate(from, { replace: true });
@@ -27,7 +32,7 @@ const Signup = () => {
 
   let errMsg;
 
-  if (error) {
+  if (error || updatingError) {
     errMsg = (
       <p className="text-red-500 my-3">
         <small>{error?.message}</small>
@@ -51,12 +56,13 @@ const Signup = () => {
     );
   }
 
-  if (loading) {
+  if (loading || updating) {
     return <Loading></Loading>;
   }
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data?.name });
   };
 
   return (

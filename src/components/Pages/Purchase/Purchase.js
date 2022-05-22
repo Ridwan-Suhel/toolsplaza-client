@@ -17,7 +17,7 @@ const Purchase = () => {
     isLoading,
     error,
     data: tools,
-  } = useQuery("repoData", () => fetch(url).then((res) => res.json()));
+  } = useQuery("tools", () => fetch(url).then((res) => res.json()));
 
   if (isLoading) {
     return <Loading></Loading>;

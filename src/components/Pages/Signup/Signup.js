@@ -1,7 +1,192 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { toast, ToastContainer } from "react-toastify";
+import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
 
 const Signup = () => {
-  return <div>I am from Sign up</div>;
+  const navigate = useNavigate();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  if (user) {
+    navigate("/home");
+  }
+
+  let errMsg;
+
+  if (error) {
+    errMsg = (
+      <p className="text-red-500 my-3">
+        <small>{error?.message}</small>
+      </p>
+    );
+  }
+
+  if (error?.message.includes("network-request-failed")) {
+    errMsg = (
+      <p className="text-red-500 my-3">
+        <small>🚫 Oops! Network Problem!</small>
+      </p>
+    );
+  }
+
+  if (error?.message.includes("email-already-in-use")) {
+    errMsg = (
+      <p className="text-red-500 my-3">
+        <small>🚫 Email already Exist.</small>
+      </p>
+    );
+  }
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+  };
+
+  return (
+    <section>
+      <div className="container ">
+        <div className="flex min-h-screen items-center justify-center">
+          <div className="card lg:w-5/12 bg-base-100 shadow-xl border">
+            <div className="card-body">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <h2 className="text-2xl text-center mb-5">Sign Up</h2>
+                {/* single input field  */}
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="">Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    className="input input-bordered w-full"
+                    {...register("name", {
+                      required: {
+                        value: true,
+                        message: "Name is required",
+                      },
+                    })}
+                  />
+                  <label className="label">
+                    {errors.name?.type === "required" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.name?.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                {/* single input field  */}
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="">Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    className="input input-bordered w-full"
+                    {...register("email", {
+                      required: {
+                        value: true,
+                        message: "Email is required",
+                      },
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: "Provide a valid email.",
+                      },
+                    })}
+                  />
+                  <label className="label">
+                    {errors.email?.type === "required" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.email?.message}
+                      </span>
+                    )}
+                    {errors.email?.type === "pattern" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.email?.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                {/* single input field  */}
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="">Password</span>
+                  </label>
+                  <input
+                    type="password"
+                    className="input input-bordered w-full"
+                    {...register("password", {
+                      required: {
+                        value: true,
+                        message: "Password is required",
+                      },
+                      minLength: {
+                        value: 6,
+                        message: "Must be 6 charecters or longer.",
+                      },
+                      pattern: {
+                        value: /(?=.*[!@#$%^&*])/,
+                        message: "Use atleast one special charecter.",
+                      },
+                    })}
+                  />
+                  <label className="label">
+                    {errors.password?.type === "required" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.password?.message}
+                      </span>
+                    )}
+                    {errors.password?.type === "minLength" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.password?.message}
+                      </span>
+                    )}
+                    {errors.password?.type === "pattern" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.password?.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+
+                {/* single input field  */}
+                <div className="form-control w-full mt-5">
+                  <input
+                    type="submit"
+                    value="SIGNUP"
+                    className="btn btn-primary w-full text-xl font-light"
+                  />
+                </div>
+                {errMsg}
+                {/* txt content  */}
+                <p className="text-center mt-5">
+                  Already have an account?{" "}
+                  <Link className="text-secondary" to="/login">
+                    Please Login
+                  </Link>
+                </p>
+
+                <div className="flex flex-col w-full border-opacity-50">
+                  <div className="divider">OR</div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Signup;

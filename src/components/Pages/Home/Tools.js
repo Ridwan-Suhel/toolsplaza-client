@@ -34,7 +34,7 @@ const Tools = () => {
         <SectionTitle
           titleWrapperClasses="title mb-16 text-neutral"
           shortHeading="Our Tools"
-          shortTitle="Check our best tools in this recent year."
+          shortTitle="Check our best recent tools."
         />
         <div className="tools-wrapper">
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:grid-cols-2 gap-4">

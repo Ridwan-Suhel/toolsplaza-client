@@ -1,12 +1,13 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../Loading/Loading";
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
+  const { pathname } = useLocation();
   const logout = () => {
     signOut(auth);
   };
@@ -21,6 +22,15 @@ const Header = () => {
       <li>
         <NavLink to="/blog">Blog</NavLink>
       </li>
+
+      {user && (
+        <>
+          <li>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
+        </>
+      )}
+
       {user ? (
         <li>
           <NavLink onClick={logout} to="/login">
@@ -32,8 +42,9 @@ const Header = () => {
           <NavLink to="/login">Login</NavLink>
         </li>
       )}
+
       {user && (
-        <button class="btn btn-sm btn-primary btn-outline">
+        <button class="btn btn-sm btn-primary btn-outline ml-2">
           {user?.displayName}
         </button>
       )}
@@ -47,6 +58,22 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="navbar ">
           <div className="navbar-start lg:w-1/4">
+            {/* drawer btn  */}
+            {pathname.includes("dashboard") && (
+              <label for="my-drawer-2" class="pl-3 drawer-button lg:hidden">
+                <svg
+                  class="swap-off fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 512 512"
+                >
+                  <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+                </svg>
+              </label>
+            )}
+            {/* drawer btn end here  */}
+
             <Link to="/home" className="btn btn-ghost normal-case text-xl">
               ToolsPlaza
             </Link>

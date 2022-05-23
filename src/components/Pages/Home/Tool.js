@@ -24,7 +24,7 @@ const Tool = ({ tool }) => {
       </figure>
       <div class="card-body">
         <h2 class="card-title">
-          {name} <div class="badge badge-secondary">NEW</div>
+          {name} <div class="badge badge-primary">NEW</div>
         </h2>
         <p>{description.slice(0, 65).concat("...")}</p>
         <p>Minimun Order: {minOrderQuantity}</p>

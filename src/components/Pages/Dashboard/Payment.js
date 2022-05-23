@@ -21,8 +21,6 @@ const Payment = () => {
     return <Loading></Loading>;
   }
 
-  console.log(data);
-
   return (
     <div className="mt-5">
       <div className="flex items-center gap-6 justify-center flex-col ">

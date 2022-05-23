@@ -8,7 +8,6 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([]);
 
   const email = user?.email;
-  console.log(email);
 
   const url = `http://localhost:5000/orders/${email}`;
   useEffect(() => {
@@ -18,7 +17,6 @@ const MyOrders = () => {
         setOrders(data);
       });
   }, []);
-  console.log(orders);
 
   return (
     <div className="mt-5">

@@ -8,7 +8,7 @@ const Reviews = () => {
 
   fetch("reviews.json")
     .then((res) => res.json())
-    .then((data) => setReviews(data.slice(0, 4)));
+    .then((data) => setReviews(data));
 
   return (
     <section

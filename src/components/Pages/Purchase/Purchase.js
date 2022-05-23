@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 
@@ -10,9 +11,11 @@ const Purchase = () => {
   const [user, loading, authError] = useAuthState(auth);
   const [qty, setQty] = useState("");
   const [err, setErr] = useState(false);
-  const [minOrdererr, setMinOrdererr] = useState(false);
-  // const [errTxt, setErrTxt] = useState("");
-  console.log("Quan", qty);
+  const [minimumOrdererErr, setMinimumOrdererErr] = useState(false);
+  const [errTxt, setErrTxt] = useState("");
+
+  let quantityNum = Number(qty);
+
   const {
     register,
     formState: { errors },
@@ -27,10 +30,7 @@ const Purchase = () => {
   );
 
   const unitPrice = parseInt(tools?.price);
-  const totalPrice = unitPrice * Number(qty);
-  // const orderQty = parseInt(qty);
-
-  // console.log(totalPrice);
+  const totalPrice = unitPrice * Number(quantityNum);
 
   if (isLoading || loading) {
     return <Loading></Loading>;
@@ -38,46 +38,69 @@ const Purchase = () => {
 
   const minOrder = parseInt(tools.minOrderQuantity);
   const availableQty = parseInt(tools.availableQuantity);
-  // console.log(typeof minOrder, typeof availableQty);
+  const toolsName = tools.name;
+  const toolsImage = tools.image;
+  const toolsDecription = tools.description;
+  // console.log(typeof minOrder, typeof availableQty, typeof quantityNum);
 
   let incNum = () => {
-    if (qty === availableQty) {
+    if (quantityNum === minOrder) {
+      setErrTxt("");
+    }
+    if (quantityNum === availableQty) {
       setErr(true);
     }
-    if (qty < availableQty) {
-      setQty(Number(qty) + 1);
+    if (quantityNum < availableQty) {
+      setQty(Number(quantityNum) + 1);
       setErr(false);
+      setMinimumOrdererErr(false);
     }
   };
   let decNum = () => {
     // min quany
-    if (qty > minOrder) {
-      setQty(Number(qty) - 1);
+    if (quantityNum > minOrder) {
+      setQty(Number(quantityNum) - 1);
       setErr(false);
-      setMinOrdererr(false);
+      setMinimumOrdererErr(false);
+    }
+    if (quantityNum === minOrder) {
+      setMinimumOrdererErr(true);
     }
   };
 
   const onSubmit = (data) => {
-    const OrderPrice = unitPrice * Number(qty);
-
-    // const orderQty = parseInt(data.quantity);
-    // let newPrice = unitPrice * orderQty;
-
-    // console.log(newPrice);
+    const OrderPrice = unitPrice * Number(quantityNum);
     const orderInfo = {
+      toolsName: toolsName,
+      description: toolsDecription,
+      image: toolsImage,
       address: data.address,
       city: data.city,
       email: data.email,
       name: data.name,
-      quantity: qty,
+      quantity: quantityNum,
       zip: data.zip,
       price: OrderPrice,
     };
-    console.log(orderInfo);
-    // refetch();
+
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderInfo),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        toast.success("You Place the order successfully.");
+      });
+
+    // console.log(orderInfo);
     reset();
+    // refetch();
   };
+
   return (
     <section className="py-20">
       <div className="container mx-auto px-4">
@@ -185,7 +208,9 @@ const Purchase = () => {
                           value={qty}
                           class="input input-bordered w-full lg:rounded-none text-center"
                           {...register("quantity", {
-                            onChange: (e) => setQty(e.target.value),
+                            onChange: (e) => {
+                              setQty(e.target.value);
+                            },
                             required: {
                               value: true,
                               message: "Something wrong please type Quantity.",
@@ -214,15 +239,19 @@ const Purchase = () => {
                       {errors.quantity &&
                         "Something wrong. please type quantity again."}
                     </p>
-                    <p className="text-red-500 mb-2">
-                      {err && "Not available more product."}
+                    <p className="text-red-400 mb-">{errTxt}</p>
+                    <p className="text-red-400 mb-2">
+                      {(minimumOrdererErr || err) &&
+                        `You can order minimum ${minOrder} or maximum ${availableQty} tools`}
                     </p>
 
                     <div className="form-control mb-5 lg:mb-2">
                       <input
                         type="submit"
                         disabled={
-                          (qty < minOrder || qty > availableQty) && "disabled"
+                          (quantityNum < minOrder ||
+                            quantityNum > availableQty) &&
+                          "disabled"
                         }
                         value="Place Order"
                         class="btn-neutral w-full btn"

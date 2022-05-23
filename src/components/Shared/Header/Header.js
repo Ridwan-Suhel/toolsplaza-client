@@ -12,9 +12,7 @@ const Header = () => {
   };
   console.log("I am from header", user);
   // displayName
-  if (loading) {
-    return <Loading />;
-  }
+
   const menuItems = (
     <>
       <li>
@@ -41,6 +39,9 @@ const Header = () => {
       )}
     </>
   );
+  // if (loading) {
+  //   return <Loading />;
+  // }
   return (
     <header className="border-b">
       <div className="container mx-auto">

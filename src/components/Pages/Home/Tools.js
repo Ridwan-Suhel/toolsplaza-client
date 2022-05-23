@@ -5,28 +5,28 @@ import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import Tool from "./Tool";
 
 const Tools = () => {
-  // const [tools, setTools] = useState([]);
+  const [tools, setTools] = useState([]);
 
-  // fetch("http://localhost:5000/tools")
-  //   .then((res) => res.json())
-  //   .then((data) => setTools(data.slice(0, 6)));
+  fetch("http://localhost:5000/tools")
+    .then((res) => res.json())
+    .then((data) => setTools(data.slice(0, 6)));
 
-  const url = `http://localhost:5000/tools`;
-  const {
-    isLoading,
-    error,
-    data: tools,
-  } = useQuery("tools", () => fetch(url).then((res) => res.json()));
+  // const url = `http://localhost:5000/tools`;
+  // const {
+  //   data: tools,
+  //   isLoading,
+  //   error,
+  // } = useQuery("tools", () => fetch(url).then((res) => res.json()));
 
-  if (isLoading) {
-    return (
-      <div className="mt-20">
-        <button class="btn btn-square loading"></button>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="my-20 text-center">
+  //       <button class="btn btn-square loading"></button>
+  //     </div>
+  //   );
+  // }
 
-  const showTools = tools.slice(0, 6);
+  // const showTools = tools?.slice(0, 6);
 
   return (
     <div className="py-20">
@@ -39,7 +39,7 @@ const Tools = () => {
         <div className="tools-wrapper">
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:grid-cols-2 gap-4">
             {/* single card  */}
-            {showTools.map((tool) => (
+            {tools.map((tool) => (
               <Tool key={tool._id} tool={tool} />
             ))}
           </div>

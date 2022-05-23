@@ -17,7 +17,6 @@ const Tool = ({ tool }) => {
   const handleClick = (id) => {
     navigate(`/purchase/${id}`);
   };
-
   return (
     <div class="card w-full bg-base-100 shadow-xl border">
       <figure>

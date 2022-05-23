@@ -46,7 +46,7 @@ const Payment = () => {
           </div>
         </div>
         {/* single card  */}
-        <div class="card bg-base-100 shadow-xl bdata max-w-md lg:w-[420px]">
+        <div class="border card bg-base-100 shadow-xl bdata max-w-md lg:w-[420px]">
           <div class="card-body">
             <Elements stripe={stripePromise}>
               <CheckoutForm data={data} />

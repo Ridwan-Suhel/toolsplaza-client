@@ -14,6 +14,7 @@ const OrderRow = ({ order, index }) => {
     toolsName,
     zip,
     unitPrice,
+    transactionId,
   } = order;
   return (
     <tr>
@@ -38,7 +39,14 @@ const OrderRow = ({ order, index }) => {
           </Link>
         )}
         {price && order.paid && (
-          <span className="btn btn-success btn-xs px-4">Paid</span>
+          <>
+            <p>
+              <span className="btn btn-success btn-xs px-4">Paid</span>
+            </p>
+            <p className="bg-gray-900 text-white p-1 rounded mt-2">
+              <strong>Transaction Id:</strong> <small>{transactionId}</small>
+            </p>
+          </>
         )}
       </td>
     </tr>

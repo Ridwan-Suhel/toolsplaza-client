@@ -9,7 +9,7 @@ const CheckoutForm = ({ data }) => {
   const [processing, setProcessing] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
 
-  const { price, name, email } = data;
+  const { price, name, email, _id } = data;
 
   useEffect(() => {
     fetch("http://localhost:5000/create-payment-intent", {
@@ -52,6 +52,9 @@ const CheckoutForm = ({ data }) => {
       setCardError("");
     }
 
+    setSuccess("");
+    setProcessing(true);
+
     //confirm card payment
     const { paymentIntent, error: intentError } =
       await stripe.confirmCardPayment(clientSecret, {
@@ -71,6 +74,26 @@ const CheckoutForm = ({ data }) => {
       setCardError("");
       setTransactionId(paymentIntent.id);
       setSuccess("Congrats! Your payment is completed.");
+
+      // storing payment info to database
+      const payment = {
+        order: _id,
+        transactionId: paymentIntent.id,
+      };
+
+      //patch/update data for payment info
+      fetch(`http://localhost:5000/orders/order/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          //   console.log(data);
+          setProcessing(false);
+        });
     }
   };
   return (
@@ -95,7 +118,7 @@ const CheckoutForm = ({ data }) => {
         <button
           className="btn btn-success btn-sm px-8 mt-4"
           type="submit"
-          disabled={!stripe || !clientSecret}
+          disabled={!stripe || !clientSecret || success}
         >
           Pay
         </button>
@@ -104,10 +127,10 @@ const CheckoutForm = ({ data }) => {
       {cardError && <p className="text-red-500 mt-2">{cardError}</p>}
       {success && (
         <div className="mt-2">
-          <p className="text-green-500">{success}</p>
+          <p className="text-primary">{success}</p>
           <p className="mt-1">
             Your transaction ID is:{" "}
-            <i className="font-bold text-green-500">{transactionId}</i>
+            <span className="font-bold text-primary">{transactionId}</span>
           </p>
         </div>
       )}

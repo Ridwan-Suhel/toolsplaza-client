@@ -11,8 +11,6 @@ const Header = () => {
   const logout = () => {
     signOut(auth);
   };
-  console.log("I am from header", user);
-  // displayName
 
   const menuItems = (
     <>
@@ -44,7 +42,7 @@ const Header = () => {
       )}
 
       {user && (
-        <button class="btn btn-sm btn-primary btn-outline ml-2">
+        <button className="btn btn-sm btn-primary btn-outline ml-2">
           {user?.displayName}
         </button>
       )}
@@ -60,9 +58,9 @@ const Header = () => {
           <div className="navbar-start lg:w-1/4">
             {/* drawer btn  */}
             {pathname.includes("dashboard") && (
-              <label for="my-drawer-2" class="pl-3 drawer-button lg:hidden">
+              <label for="my-drawer-2" className="pl-3 drawer-button lg:hidden">
                 <svg
-                  class="swap-off fill-current"
+                  className="swap-off fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   width="28"
                   height="28"

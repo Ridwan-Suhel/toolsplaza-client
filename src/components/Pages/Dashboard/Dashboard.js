@@ -5,20 +5,20 @@ import auth from "../../../firebase.init";
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
-  console.log(user);
+
   return (
-    <div class="drawer drawer-mobile">
-      <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content bg-base-100 px-4">
+    <div className="drawer drawer-mobile">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content bg-base-100 px-4">
         {/* <!-- Page content here --> */}
 
         <Outlet />
         {/* <!-- Page content end here --> */}
       </div>
-      <div class="drawer-side">
-        <label for="my-drawer-2" class="drawer-overlay"></label>
+      <div className="drawer-side">
+        <label for="my-drawer-2" className="drawer-overlay"></label>
 
-        <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 shadow-xl border m-2 rounded-lg text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 shadow-xl border m-2 rounded-lg text-base-content">
           {/* <!-- Sidebar content here --> */}
           <div className="mb-3 flex justify-between items-center">
             <h2 className="text-xl">
@@ -28,8 +28,8 @@ const Dashboard = () => {
               </span>
             </h2>
             {user?.photoURL && (
-              <div class="avatar">
-                <div class="w-8 h-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <div className="avatar">
+                <div className="w-8 h-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                   <img
                     className="object-cover"
                     src={user?.photoURL}

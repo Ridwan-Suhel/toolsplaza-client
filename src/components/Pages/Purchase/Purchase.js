@@ -81,6 +81,7 @@ const Purchase = () => {
       quantity: quantityNum,
       zip: data.zip,
       price: OrderPrice,
+      unitPrice: unitPrice,
     };
 
     fetch("http://localhost:5000/orders", {
@@ -106,17 +107,17 @@ const Purchase = () => {
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-3 gap-5">
           <div className="product-card-details">
-            <div class="card w-full bg-base-100 rounded-none border">
+            <div className="card w-full bg-base-100 rounded-none border">
               <figure className="">
                 <img className="" src={tools.image} alt={tools.name} />
               </figure>
-              <div class="card-body">
-                <h2 class="card-title">{tools.name}</h2>
+              <div className="card-body">
+                <h2 className="card-title">{tools.name}</h2>
 
                 <p>Minimun Order: {tools.minOrderQuantity}</p>
                 <p className="text-lg">Unit Price: ${tools.price}</p>
-                <div class="card-actions justify-end">
-                  <div class="badge badge-outline">
+                <div className="card-actions justify-end">
+                  <div className="badge badge-outline">
                     {tools.availableQuantity} available
                   </div>
                 </div>
@@ -125,21 +126,21 @@ const Purchase = () => {
           </div>
           <div className="purchase-info lg:col-span-2">
             <div>
-              <div class="border ">
-                <div class="card-body">
+              <div className="border ">
+                <div className="card-body">
                   <h2 className="text-2xl">Product name: {tools.name} </h2>
                   <h2 className="text-xl">Description: {tools.description}</h2>
                   <h2 className="text-lg text-primary">
                     Please Fill up the form to place an order.
                   </h2>
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-control mb-5">
+                    <div className="form-control mb-5 ">
                       <input
                         placeholder="Your Name"
                         value={user.displayName}
                         readOnly
                         type="text"
-                        class="input input-bordered w-full"
+                        className="input input-bordered w-full"
                         {...register("name", { required: true })}
                       />
                     </div>
@@ -150,7 +151,7 @@ const Purchase = () => {
                         value={user.email}
                         readOnly
                         type="email"
-                        class="input input-bordered w-full"
+                        className="input input-bordered w-full"
                         {...register("email", { required: true })}
                       />
                     </div>
@@ -159,7 +160,7 @@ const Purchase = () => {
                       <input
                         placeholder="Address"
                         type="text"
-                        class="input input-bordered w-full"
+                        className="input input-bordered w-full"
                         {...register("address", { required: true })}
                       />
                       <p className="text-red-500 mt-2">
@@ -172,7 +173,7 @@ const Purchase = () => {
                         <input
                           placeholder="City"
                           type="text"
-                          class="input input-bordered w-full"
+                          className="input input-bordered w-full"
                           {...register("city", { required: true })}
                         />
 
@@ -184,7 +185,7 @@ const Purchase = () => {
                         <input
                           placeholder="Zip Code"
                           type="number"
-                          class="input input-bordered w-full"
+                          className="input input-bordered w-full"
                           {...register("zip", { required: true })}
                         />
                         <p className="text-red-500 mt-2">
@@ -198,7 +199,7 @@ const Purchase = () => {
                         <button
                           type="button"
                           onClick={decNum}
-                          className="btn btn-primary lg:rounded-tr-none lg:rounded-br-none"
+                          className="mb-4 lg:m-0 w-full lg:w-auto btn btn-primary lg:rounded-tr-none lg:rounded-br-none"
                         >
                           Decrease
                         </button>
@@ -206,7 +207,7 @@ const Purchase = () => {
                           placeholder={`Minimum Order ${tools.minOrderQuantity}`}
                           type="number"
                           value={qty}
-                          class="input input-bordered w-full lg:rounded-none text-center"
+                          className="input input-bordered w-full lg:rounded-none text-center"
                           {...register("quantity", {
                             onChange: (e) => {
                               setQty(e.target.value);
@@ -220,7 +221,7 @@ const Purchase = () => {
                         <button
                           type="button"
                           onClick={incNum}
-                          className="btn btn-primary lg:rounded-tl-none lg:rounded-bl-none"
+                          className="mt-4 lg:m-0 w-full lg:w-auto btn btn-primary lg:rounded-tl-none lg:rounded-bl-none"
                         >
                           Increase
                         </button>
@@ -254,7 +255,7 @@ const Purchase = () => {
                           "disabled"
                         }
                         value="Place Order"
-                        class="btn-neutral w-full btn"
+                        className="btn-neutral w-full btn"
                       />
                     </div>
                   </form>

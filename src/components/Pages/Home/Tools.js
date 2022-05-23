@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../../Shared/Loading/Loading";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
@@ -7,9 +7,11 @@ import Tool from "./Tool";
 const Tools = () => {
   const [tools, setTools] = useState([]);
 
-  fetch("http://localhost:5000/tools")
-    .then((res) => res.json())
-    .then((data) => setTools(data.slice(0, 6)));
+  useEffect(() => {
+    fetch("http://localhost:5000/tools")
+      .then((res) => res.json())
+      .then((data) => setTools(data.slice(0, 6)));
+  }, []);
 
   // const url = `http://localhost:5000/tools`;
   // const {

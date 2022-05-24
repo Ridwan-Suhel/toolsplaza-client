@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const OrderRow = ({ order, index }) => {
+const OrderRow = ({ order, index, refetch, setDeletingOrder }) => {
   const {
     _id,
     address,
@@ -16,6 +17,7 @@ const OrderRow = ({ order, index }) => {
     unitPrice,
     transactionId,
   } = order;
+
   return (
     <tr>
       <th>{index + 1}</th>
@@ -47,6 +49,17 @@ const OrderRow = ({ order, index }) => {
               <strong>Transaction Id:</strong> <small>{transactionId}</small>
             </p>
           </>
+        )}
+      </td>
+      <td>
+        {!order.paid && (
+          <label
+            for="delete-confirm-modal"
+            onClick={() => setDeletingOrder(order)}
+            className="btn btn-error btn-sm px-4"
+          >
+            Delete
+          </label>
         )}
       </td>
     </tr>

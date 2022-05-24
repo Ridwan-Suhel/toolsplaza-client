@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { signOut } from "firebase/auth";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import DeleteModal from "./DeleteModal";
@@ -9,6 +11,7 @@ import OrderRow from "./OrderRow";
 const MyOrders = () => {
   const [user, loading, error] = useAuthState(auth);
   const [deletingOrder, setDeletingOrder] = useState(null);
+  const navigate = useNavigate();
 
   const email = user?.email;
 
@@ -25,7 +28,21 @@ const MyOrders = () => {
     isLoading,
     data: orders,
     refetch,
-  } = useQuery(["tools", email], () => fetch(url).then((res) => res.json()));
+  } = useQuery(["tools", email], () =>
+    fetch(url, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+        navigate("/");
+      }
+      return res.json();
+    })
+  );
 
   if (isLoading) {
     return <Loading></Loading>;
@@ -58,7 +75,7 @@ const MyOrders = () => {
               </thead>
               <tbody>
                 {/* <!-- row 1 --> */}
-                {orders.map((order, index) => (
+                {orders?.map((order, index) => (
                   <OrderRow
                     key={order._id}
                     order={order}

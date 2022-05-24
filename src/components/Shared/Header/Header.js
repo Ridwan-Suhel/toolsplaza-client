@@ -10,11 +10,12 @@ const Header = () => {
   const { pathname } = useLocation();
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem("accessToken");
   };
 
-  if (loading) {
-    return <Loading></Loading>;
-  }
+  // if (loading) {
+  //   return <Loading></Loading>;
+  // }
 
   const menuItems = (
     <>

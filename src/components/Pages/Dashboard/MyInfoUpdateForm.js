@@ -44,11 +44,13 @@ const MyInfoUpdateForm = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        // toast.success("Your Profile updated successfully.");
+        if (result.modifiedCount || result.upsertedCount) {
+          toast.success("Your Profile updated successfully.");
+        }
       });
 
     console.log(myInfo);
-    // reset();
+    reset();
   };
 
   return (
@@ -78,8 +80,9 @@ const MyInfoUpdateForm = () => {
             <input
               placeholder="Country"
               type="text"
+              required
               className="input input-bordered input-primary w-full"
-              {...register("country", { required: true })}
+              {...register("country")}
             />
             <p className="text-red-500 mt-2">
               {errors.address && "Address is required"}

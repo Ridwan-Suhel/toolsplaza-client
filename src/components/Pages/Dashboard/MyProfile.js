@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
@@ -7,6 +7,7 @@ import MyInfoUpdateForm from "./MyInfoUpdateForm";
 
 const MyProfile = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [profileRefetch, setProfileRefetch] = useState(false);
 
   if (loading) {
     return <Loading />;
@@ -49,7 +50,7 @@ const MyProfile = () => {
             </div>
             {/* left area single card  */}
             <div className="mt-5">
-              <MyInfo></MyInfo>
+              <MyInfo setProfileRefetch={setProfileRefetch}></MyInfo>
             </div>
           </div>
 

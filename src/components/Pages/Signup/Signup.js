@@ -8,6 +8,7 @@ import {
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import useToken from "../../../hooks/useToken";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -24,11 +25,17 @@ const Signup = () => {
 
   const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
 
+  const [token] = useToken(user);
+
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, from, navigate]);
+  }, [token, from, navigate]);
+
+  // if (token) {
+  //   navigate("/home");
+  // }
 
   let errMsg;
 

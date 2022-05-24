@@ -34,7 +34,7 @@ const MyOrders = () => {
   return (
     <div className="mt-5">
       <div className="myOrders">
-        <h2 className="text-xl ">
+        <h2 className="text-xl text-primary">
           You have - {orders?.length} {orders?.length > 1 ? "orders" : "order"}
         </h2>
 

@@ -27,7 +27,7 @@ const AddReview = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        toast.success("You Place the order successfully.");
+        toast.success("You successfully added a review.");
       });
 
     reset();

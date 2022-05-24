@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
@@ -13,6 +13,7 @@ const Purchase = () => {
   const [err, setErr] = useState(false);
   const [minimumOrdererErr, setMinimumOrdererErr] = useState(false);
   const [errTxt, setErrTxt] = useState("");
+  const navigate = useNavigate();
 
   let quantityNum = Number(qty);
 
@@ -94,6 +95,7 @@ const Purchase = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+        navigate("/dashboard");
         toast.success("You Place the order successfully.");
       });
 

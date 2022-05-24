@@ -9,6 +9,7 @@ import auth from "../../../firebase.init";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import useToken from "../../../hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,11 +30,13 @@ const Login = () => {
   const [sendPasswordResetEmail, sending, ResetPassError] =
     useSendPasswordResetEmail(auth);
 
+  const [token] = useToken(user);
+
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, from, navigate]);
+  }, [token, from, navigate]);
 
   let errMsg;
 

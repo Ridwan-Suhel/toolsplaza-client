@@ -12,6 +12,10 @@ const Header = () => {
     signOut(auth);
   };
 
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
   const menuItems = (
     <>
       <li>

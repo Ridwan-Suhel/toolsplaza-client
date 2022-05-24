@@ -13,7 +13,7 @@ import useToken from "../../../hooks/useToken";
 const Signup = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location?.state?.from?.pathname || "/";
+  let from = location?.state?.from?.pathname || "/dashboard";
   const {
     register,
     formState: { errors },

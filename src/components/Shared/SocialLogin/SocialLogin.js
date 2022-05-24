@@ -8,7 +8,7 @@ const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location?.state?.from?.pathname || "/";
+  let from = location?.state?.from?.pathname || "/dashboard";
 
   const [token] = useToken(user);
 

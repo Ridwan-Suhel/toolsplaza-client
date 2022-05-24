@@ -7,7 +7,6 @@ import MyInfoUpdateForm from "./MyInfoUpdateForm";
 
 const MyProfile = () => {
   const [user, loading, error] = useAuthState(auth);
-  const [profileRefetch, setProfileRefetch] = useState(false);
 
   if (loading) {
     return <Loading />;
@@ -50,7 +49,7 @@ const MyProfile = () => {
             </div>
             {/* left area single card  */}
             <div className="mt-5">
-              <MyInfo setProfileRefetch={setProfileRefetch}></MyInfo>
+              <MyInfo></MyInfo>
             </div>
           </div>
 

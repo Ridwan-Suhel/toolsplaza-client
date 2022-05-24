@@ -14,7 +14,7 @@ import useToken from "../../../hooks/useToken";
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location?.state?.from?.pathname || "/";
+  let from = location?.state?.from?.pathname || "/dashboard";
 
   const [email, setEmail] = useState("");
 

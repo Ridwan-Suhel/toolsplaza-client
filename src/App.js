@@ -15,6 +15,7 @@ import MyOrders from "./components/Pages/Dashboard/MyOrders";
 import AddReview from "./components/Pages/Dashboard/AddReview";
 import MyProfile from "./components/Pages/Dashboard/MyProfile";
 import Payment from "./components/Pages/Dashboard/Payment";
+import Users from "./components/Pages/Dashboard/Users";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="addreview" element={<AddReview />} />
           <Route path="myprofile" element={<MyProfile />} />
           <Route path="payment/:id" element={<Payment />} />
+          <Route path="users" element={<Users />} />
         </Route>
 
         {/* dashboard routes end here  */}

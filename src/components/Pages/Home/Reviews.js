@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import reviewsBg from "../../../image/bg-2.jpg";
 import Review from "./Review";
@@ -6,9 +6,11 @@ import Review from "./Review";
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
-  fetch("reviews.json")
-    .then((res) => res.json())
-    .then((data) => setReviews(data));
+  useEffect(() => {
+    fetch("http://localhost:5000/reviews")
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, []);
 
   return (
     <section

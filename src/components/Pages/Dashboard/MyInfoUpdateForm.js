@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 
@@ -18,6 +19,8 @@ const MyInfoUpdateForm = () => {
     return <Loading></Loading>;
   }
 
+  const email = user?.email;
+
   const onSubmit = (data) => {
     const myInfo = {
       city: data.city,
@@ -30,6 +33,19 @@ const MyInfoUpdateForm = () => {
       email: user?.email,
       photoURL: user?.photoURL,
     };
+
+    fetch(`http://localhost:5000/userinfo/${email}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(myInfo),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        // toast.success("Your Profile updated successfully.");
+      });
 
     console.log(myInfo);
     // reset();

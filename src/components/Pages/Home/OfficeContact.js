@@ -8,7 +8,7 @@ const OfficeContact = () => {
       <div className="container mx-auto px-4">
         <div className="off-contact-wrapper grid lg:grid-cols-2 items-center">
           <div>
-            <div className="title mb-16 text-neutral">
+            <div className="title mb-8 text-neutral">
               <h2 className="text-4xl">Our Office Location</h2>
               <p className="text-xl  mt-3">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae

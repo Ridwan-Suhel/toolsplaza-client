@@ -30,10 +30,6 @@ const OrderRow = ({ index, order, refetch, setDeletingOrder }) => {
     // console.log(productInfo);
   };
 
-  // const handleDelete = () => {
-  //   console.log("delete");
-  // };
-
   return (
     <tr>
       <th>{index + 1}</th>
@@ -85,18 +81,3 @@ const OrderRow = ({ index, order, refetch, setDeletingOrder }) => {
 };
 
 export default OrderRow;
-
-// address:
-// city:
-// description:
-// email:
-// image:
-// name:
-// paid: true,
-// price:
-// quantity:
-// toolsName:
-// transactionId:
-// unitPrice: 5
-// zip:
-// _id:

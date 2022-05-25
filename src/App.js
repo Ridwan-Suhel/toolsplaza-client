@@ -19,6 +19,7 @@ import Users from "./components/Pages/Dashboard/Users";
 import RequireAdmin from "./components/Shared/RequireAuth/RequireAdmin";
 import AddProduct from "./components/Pages/Dashboard/AddProduct";
 import ManageOrders from "./components/Pages/Dashboard/AdminPages/ManageOrders";
+import ManageProducts from "./components/Pages/Dashboard/AdminPages/ManageProducts";
 
 function App() {
   return (
@@ -73,6 +74,14 @@ function App() {
             element={
               <RequireAdmin>
                 <ManageOrders />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manageoproducts"
+            element={
+              <RequireAdmin>
+                <ManageProducts />
               </RequireAdmin>
             }
           />

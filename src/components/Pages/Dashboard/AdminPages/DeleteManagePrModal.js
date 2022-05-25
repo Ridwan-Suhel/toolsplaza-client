@@ -2,11 +2,11 @@ import React from "react";
 import { ExclamationCircleIcon } from "@heroicons/react/solid";
 import { toast } from "react-toastify";
 
-const DeleteOrderModal = ({ deletingOrder, refetch, setDeletingOrder }) => {
-  const { _id, name, toolsName } = deletingOrder;
+const DeleteManagePrModal = ({ deletingTool, refetch, setDeletingTool }) => {
+  const { _id, name } = deletingTool;
 
   const handleDelete = () => {
-    fetch(`http://localhost:5000/orders/${_id}`, {
+    fetch(`http://localhost:5000/tools/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -14,7 +14,7 @@ const DeleteOrderModal = ({ deletingOrder, refetch, setDeletingOrder }) => {
         console.log(result);
         if (result.deletedCount) {
           toast.success("Suuccessfully deleted");
-          setDeletingOrder(null);
+          setDeletingTool(null);
           refetch();
         }
       });
@@ -25,7 +25,7 @@ const DeleteOrderModal = ({ deletingOrder, refetch, setDeletingOrder }) => {
       {/* <!-- Put this part before </body> tag --> */}
       <input
         type="checkbox"
-        id="delete-order-modal-by-admin"
+        id="delete-order-modal-from-pr"
         class="modal-toggle"
       />
       <div class="modal modal-bottom sm:modal-middle">
@@ -33,17 +33,17 @@ const DeleteOrderModal = ({ deletingOrder, refetch, setDeletingOrder }) => {
           <ExclamationCircleIcon className="h-12 w-12 text-red-500 mx-auto my-5" />
           <h3 class="text-lg text-center">
             Are You Sure want to Delete{" "}
-            <strong className="font-bold ">{toolsName}</strong>
+            <strong className="font-bold ">{name}</strong>
           </h3>
           <p class="py-4 text-center">
             After Deleting the order It will remove from your Order list.
           </p>
           <div class="modal-action">
-            <label for="delete-order-modal-by-admin" class="btn btn-sm px-4">
+            <label for="delete-order-modal-from-pr" class="btn btn-sm px-4">
               Cancel
             </label>
             <label
-              for="delete-order-modal-by-admin"
+              for="delete-order-modal-from-pr"
               onClick={() => handleDelete()}
               className="btn btn-error btn-sm px-4"
             >
@@ -56,4 +56,4 @@ const DeleteOrderModal = ({ deletingOrder, refetch, setDeletingOrder }) => {
   );
 };
 
-export default DeleteOrderModal;
+export default DeleteManagePrModal;

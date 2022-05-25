@@ -35,30 +35,39 @@ const MyInfo = () => {
             Refresh
           </button>
         </div>
-        <div className="mb-2">
-          <span>Phone</span>
-          <h2 className="text-xl">{userInfo?.phone}</h2>
-        </div>
-        <div className="mb-2">
-          <span>Education</span>
-          <h2 className="text-xl">{userInfo?.education}</h2>
-        </div>
-        <div className="mb-2">
-          <span>City</span>
-          <h2 className="text-xl">{userInfo?.city}</h2>
-        </div>
-        <div className="mb-2">
-          <span>Zip Code</span>
-          <h2 className="text-xl">{userInfo?.zip}</h2>
-        </div>
-        <div className="mb-2">
-          <span>Country</span>
-          <h2 className="text-xl">{userInfo?.country}</h2>
-        </div>
-        <div className="mb-2">
-          <span>Linkedin</span>
-          <h2 className="text-xl">{userInfo?.linkedin}</h2>
-        </div>
+
+        {userInfo ? (
+          <div className="info-txt-wrapper">
+            <div className="mb-2">
+              <small>Phone:</small>
+              <h2 className="text-xl">{userInfo?.phone}</h2>
+            </div>
+            <div className="mb-2">
+              <small>Education:</small>
+              <h2 className="text-xl">{userInfo?.education}</h2>
+            </div>
+            <div className="mb-2">
+              <small>City:</small>
+              <h2 className="text-xl">{userInfo?.city}</h2>
+            </div>
+            <div className="mb-2">
+              <small>Zip Code:</small>
+              <h2 className="text-xl">{userInfo?.zip}</h2>
+            </div>
+            <div className="mb-2">
+              <small>Country:</small>
+              <h2 className="text-xl">{userInfo?.country}</h2>
+            </div>
+            <div className="mb-2">
+              <small>Linkedin:</small>
+              <h2 className="text-xl">{userInfo?.linkedin}</h2>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-5">
+            <h2 className="text-xl text-error">Please Update Your profile</h2>
+          </div>
+        )}
       </div>
     </div>
   );

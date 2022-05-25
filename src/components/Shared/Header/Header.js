@@ -46,7 +46,7 @@ const Header = () => {
         </li>
       )}
 
-      {user && (
+      {user?.displayName && (
         <button className="btn btn-sm btn-primary btn-outline ml-2">
           {user?.displayName}
         </button>

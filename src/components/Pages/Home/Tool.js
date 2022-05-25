@@ -20,7 +20,11 @@ const Tool = ({ tool }) => {
   return (
     <div class="card w-full bg-base-100 shadow-xl border">
       <figure>
-        <img src={image} alt="Shoes" />
+        <img
+          src={image}
+          className="w-full object-cover h-[220px]"
+          alt="Shoes"
+        />
       </figure>
       <div class="card-body">
         <h2 class="card-title">

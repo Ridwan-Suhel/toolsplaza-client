@@ -1,0 +1,20 @@
+.card-top {
+  height: 220px;
+  width: 100%;
+  overflow: hidden;
+  background: #333;
+}
+.single-card {
+  cursor: pointer;
+}
+.card-top img {
+  object-fit: cover;
+  overflow: hidden;
+  transition: transform 3s ease-in-out;
+  width: 100%;
+  padding: 10px;
+}
+.single-card:hover img {
+  transform: translateY(calc(-100% + 220px));
+  transition: transform 3s ease-in-out;
+}

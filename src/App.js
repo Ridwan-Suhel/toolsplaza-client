@@ -18,6 +18,7 @@ import Payment from "./components/Pages/Dashboard/Payment";
 import Users from "./components/Pages/Dashboard/Users";
 import RequireAdmin from "./components/Shared/RequireAuth/RequireAdmin";
 import AddProduct from "./components/Pages/Dashboard/AddProduct";
+import ManageOrders from "./components/Pages/Dashboard/AdminPages/ManageOrders";
 
 function App() {
   return (
@@ -64,6 +65,14 @@ function App() {
             element={
               <RequireAdmin>
                 <AddProduct />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manageorders"
+            element={
+              <RequireAdmin>
+                <ManageOrders />
               </RequireAdmin>
             }
           />

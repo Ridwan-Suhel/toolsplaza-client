@@ -83,6 +83,7 @@ const Purchase = () => {
       zip: data.zip,
       price: OrderPrice,
       unitPrice: unitPrice,
+      status: "pending",
     };
 
     fetch("http://localhost:5000/orders", {

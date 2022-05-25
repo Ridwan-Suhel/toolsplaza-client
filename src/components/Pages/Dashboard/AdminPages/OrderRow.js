@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 
-const OrderRow = ({ index, order, refetch }) => {
+const OrderRow = ({ index, order, refetch, setDeletingOrder }) => {
   const { _id, name, image, toolsName, email, price, quantity, paid, status } =
     order;
 
@@ -29,6 +29,10 @@ const OrderRow = ({ index, order, refetch }) => {
 
     // console.log(productInfo);
   };
+
+  // const handleDelete = () => {
+  //   console.log("delete");
+  // };
 
   return (
     <tr>
@@ -65,7 +69,17 @@ const OrderRow = ({ index, order, refetch }) => {
           </span>
         )}
       </td>
-      <td></td>
+      <td>
+        {!paid && (
+          <label
+            onClick={() => setDeletingOrder(order)}
+            for="delete-order-modal-by-admin"
+            className="btn btn-xs btn-error"
+          >
+            Delete order
+          </label>
+        )}
+      </td>
     </tr>
   );
 };

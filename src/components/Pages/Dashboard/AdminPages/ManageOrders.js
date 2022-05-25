@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../../../Shared/Loading/Loading";
 import OrderRow from "./OrderRow";
+import DeleteOrderModal from "./DeleteOrderModal";
 const ManageOrders = () => {
+  const [deletingOrder, setDeletingOrder] = useState(null);
   const url = `http://localhost:5000/orders`;
   const {
     isLoading,
@@ -44,12 +46,20 @@ const ManageOrders = () => {
                   index={index}
                   order={order}
                   refetch={refetch}
+                  setDeletingOrder={setDeletingOrder}
                 ></OrderRow>
               ))}
             </tbody>
           </table>
         </div>
       </div>
+      {deletingOrder && (
+        <DeleteOrderModal
+          deletingOrder={deletingOrder}
+          refetch={refetch}
+          setDeletingOrder={setDeletingOrder}
+        ></DeleteOrderModal>
+      )}
     </div>
   );
 };

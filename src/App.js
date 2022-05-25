@@ -16,6 +16,8 @@ import AddReview from "./components/Pages/Dashboard/AddReview";
 import MyProfile from "./components/Pages/Dashboard/MyProfile";
 import Payment from "./components/Pages/Dashboard/Payment";
 import Users from "./components/Pages/Dashboard/Users";
+import RequireAdmin from "./components/Shared/RequireAuth/RequireAdmin";
+import AddProduct from "./components/Pages/Dashboard/AddProduct";
 
 function App() {
   return (
@@ -44,11 +46,27 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<MyOrders />} />
+          <Route path="myorders" element={<MyOrders />} />
           <Route path="addreview" element={<AddReview />} />
-          <Route path="myprofile" element={<MyProfile />} />
+          <Route index element={<MyProfile />} />
+          {/* <Route path="myprofile" element={<MyProfile />} /> */}
           <Route path="payment/:id" element={<Payment />} />
-          <Route path="users" element={<Users />} />
+          <Route
+            path="users"
+            element={
+              <RequireAdmin>
+                <Users />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="addproduct"
+            element={
+              <RequireAdmin>
+                <AddProduct />
+              </RequireAdmin>
+            }
+          />
         </Route>
 
         {/* dashboard routes end here  */}

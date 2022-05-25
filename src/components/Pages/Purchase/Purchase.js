@@ -95,14 +95,30 @@ const Purchase = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         navigate("/dashboard");
         toast.success("You Place the order successfully.");
       });
 
-    // console.log(orderInfo);
+    const calcAvailableQuantity = availableQty - quantityNum;
+    const newAvailableQuantity = {
+      availableQuantity: calcAvailableQuantity,
+    };
+    console.log(newAvailableQuantity);
+
+    fetch(`http://localhost:5000/tools/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAvailableQuantity),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log("result from put api ", result);
+      });
+
     reset();
-    // refetch();
   };
 
   return (

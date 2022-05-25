@@ -8,7 +8,7 @@ const MyPortfolio = () => {
     <section className="py-10">
       <div className="container px-4 mx-auto">
         <div className="portfolio-top mt-10">
-          <h1 className="text-5xl text-center leading-tight">
+          <h1 className="text-3xl md:text-5xl text-center leading-tight">
             Ridwan Suhel <br className="hidden lg:block" /> Frond-End Web
             Developer
             <br className="hidden lg:block" /> Based In Bangladesh
@@ -16,7 +16,7 @@ const MyPortfolio = () => {
         </div>
 
         <div className="portfolio-middle mt-20">
-          <div className="flex gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="my-info w-full lg:pr-20">
               <div className="about mb-8">
                 <p className="text-gray-400 mb-4">Biography</p>
@@ -44,7 +44,7 @@ const MyPortfolio = () => {
                 </h3>
               </div>
             </div>
-            <div className="avatar w-full hidden lg:flex">
+            <div className="avatar lg:w-full hidden lg:grid">
               <div className="img-wrapper border">
                 <img
                   src={ridwan}
@@ -53,7 +53,7 @@ const MyPortfolio = () => {
                 />
               </div>
             </div>
-            <div className="skills w-full">
+            <div className="skills  w-full">
               <div className="mb-8">
                 <p className="text-gray-400 mb-4 lg:text-right">
                   Technical Skills

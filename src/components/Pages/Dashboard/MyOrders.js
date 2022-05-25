@@ -15,7 +15,7 @@ const MyOrders = () => {
 
   const email = user?.email;
 
-  const url = `http://localhost:5000/orders/${email}`;
+  const url = `https://peaceful-shelf-27425.herokuapp.com/orders/${email}`;
   // useEffect(() => {
   //   fetch(url)
   //     .then((res) => res.json())
@@ -56,8 +56,8 @@ const MyOrders = () => {
         </h2>
 
         <div className="order-wrapper mt-5">
-          <div class="overflow-x-auto">
-            <table class="table w-full">
+          <div className="overflow-x-auto">
+            <table className="table w-full">
               {/* <!-- head --> */}
               <thead>
                 <tr>

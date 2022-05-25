@@ -9,12 +9,12 @@ const Projects = () => {
     <div className="grid gap-4 lg:grid-cols-3 md:grid-cols-2">
       {/* single-card  */}
       <Link to="https://gadgetly-3045d.web.app/">
-        <div class="rounded single-card w-full bg-base-100 shadow border border-primary">
+        <div className="rounded single-card w-full bg-base-100 shadow border border-primary">
           <figure className="card-top">
             <img src={project1} alt="Gadgetly" />
           </figure>
-          <div class="card-body">
-            <h2 class="card-title">Gadgetly!</h2>
+          <div className="card-body">
+            <h2 className="card-title">Gadgetly!</h2>
             <p className="mb-2">
               Gadgetly is the wearhouse type simple website. This website made
               with <strong>Node js</strong>, express js,{" "}
@@ -28,12 +28,12 @@ const Projects = () => {
       </Link>
       {/* single-card  */}
       <Link to="https://tutorplus-5456d.web.app/">
-        <div class="rounded single-card w-full bg-base-100 shadow border border-primary">
+        <div className="rounded single-card w-full bg-base-100 shadow border border-primary">
           <figure className="card-top">
             <img src={project2} alt="Tutorplus" />
           </figure>
-          <div class="card-body">
-            <h2 class="card-title">TutorPlus!</h2>
+          <div className="card-body">
+            <h2 className="card-title">TutorPlus!</h2>
             <p className="mb-2">
               TutorPlus is the Indipendent service provider web app. This
               website made with<strong>react js</strong>, Bootstrap,{" "}
@@ -48,12 +48,12 @@ const Projects = () => {
       </Link>
       {/* single-card  */}
       <Link to="https://ridwan-suhel.github.io/maEng/">
-        <div class="rounded single-card w-full bg-base-100 shadow border border-primary">
+        <div className="rounded single-card w-full bg-base-100 shadow border border-primary">
           <figure className="card-top">
             <img src={project3} alt="Tutorplus" />
           </figure>
-          <div class="card-body">
-            <h2 class="card-title">MaEng!</h2>
+          <div className="card-body">
+            <h2 className="card-title">MaEng!</h2>
             <p className="mb-2">
               MaEng is an Electro Mechanical Solution &amp; Service provider
               website. This website made with<strong>Bootstrap</strong>,CSS,

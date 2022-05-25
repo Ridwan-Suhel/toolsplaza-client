@@ -17,7 +17,7 @@ const AddReview = () => {
       rating: data.ratingNumber,
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://peaceful-shelf-27425.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const AddReview = () => {
                   <label className="label mb">Select Rating Number</label>
                   <select
                     {...register("ratingNumber")}
-                    class="select select-primary w-full"
+                    className="select select-primary w-full"
                   >
                     <option value="1">1</option>
                     <option value="2">2</option>

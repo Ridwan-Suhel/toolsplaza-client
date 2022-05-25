@@ -12,7 +12,7 @@ const Payment = () => {
     "pk_test_51L0rPMGUlBGybeRPaOihAR4XRTQ1eW3WNpgJ9hT6dOqSdXBR122t5aKdoPvUedhcBJKtMeMQkZv9Gm9E5wI2n2rA00UGMYmRE4"
   );
 
-  const url = `http://localhost:5000/orders/order/${id}`;
+  const url = `https://peaceful-shelf-27425.herokuapp.com/orders/order/${id}`;
   const { isLoading, data } = useQuery(["data", id], () =>
     fetch(url).then((res) => res.json())
   );
@@ -25,12 +25,12 @@ const Payment = () => {
     <div className="mt-5">
       <div className="flex items-center gap-6 justify-center flex-col ">
         {/* single card  */}
-        <div class=" border card bg-base-100 shadow-xl bdata max-w-md mt-6  lg:w-[420px]">
-          <div class="card-body">
-            <h2 class="text-xl">
+        <div className=" border card bg-base-100 shadow-xl bdata max-w-md mt-6  lg:w-[420px]">
+          <div className="card-body">
+            <h2 className="text-xl">
               Hi <strong>{data?.name}</strong>
             </h2>
-            <h2 class="text-lg">
+            <h2 className="text-lg">
               Please Pay for <strong>{data?.toolsName}</strong>
             </h2>
             <p>
@@ -44,8 +44,8 @@ const Payment = () => {
           </div>
         </div>
         {/* single card  */}
-        <div class="border card bg-base-100 shadow-xl bdata max-w-md lg:w-[420px]">
-          <div class="card-body">
+        <div className="border card bg-base-100 shadow-xl bdata max-w-md lg:w-[420px]">
+          <div className="card-body">
             <Elements stripe={stripePromise}>
               <CheckoutForm data={data} />
             </Elements>

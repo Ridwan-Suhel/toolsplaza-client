@@ -18,12 +18,12 @@ const Newsletter = () => {
                   <input
                     type="text"
                     placeholder="Type Email"
-                    class="input sm:w-full max-w-xs text-neutral mr-4"
+                    className="input sm:w-full max-w-xs text-neutral mr-4"
                   />
                   <input
                     type="submit"
                     value="Subscribe"
-                    class="btn btn-primary px-4"
+                    className="btn btn-primary px-4"
                   />
                 </div>
               </form>

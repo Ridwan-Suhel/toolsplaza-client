@@ -5,7 +5,7 @@ import OrderRow from "./OrderRow";
 import DeleteOrderModal from "./DeleteOrderModal";
 const ManageOrders = () => {
   const [deletingOrder, setDeletingOrder] = useState(null);
-  const url = `http://localhost:5000/orders`;
+  const url = `https://peaceful-shelf-27425.herokuapp.com/orders`;
   const {
     isLoading,
     data: orders,
@@ -22,8 +22,8 @@ const ManageOrders = () => {
         we have total <strong>{orders.length}</strong> orders.
       </p>
       <div className="manage-orders-wrapper mt-5">
-        <div class="overflow-x-auto">
-          <table class="table w-full">
+        <div className="overflow-x-auto">
+          <table className="table w-full">
             {/* <!-- head --> */}
             <thead>
               <tr>

@@ -9,7 +9,7 @@ const Users = () => {
     data: users,
     refetch,
   } = useQuery("users", () =>
-    fetch("http://localhost:5000/user", {
+    fetch("https://peaceful-shelf-27425.herokuapp.com/user", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -27,8 +27,8 @@ const Users = () => {
         We have total - {users.length} {users.length > 1 ? "Users" : "User"}
       </h2>
       <div className="users-wrapper mt-5">
-        <div class="overflow-x-auto">
-          <table class="table w-full">
+        <div className="overflow-x-auto">
+          <table className="table w-full">
             {/* <!-- head --> */}
             <thead>
               <tr>

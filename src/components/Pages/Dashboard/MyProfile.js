@@ -20,8 +20,8 @@ const MyProfile = () => {
           {/* single card  */}
           <div className="left-area w-full">
             {/* left area single card  */}
-            <div class="card w-full bg-base-100 shadow border row-auto">
-              <div class="p-4">
+            <div className="card w-full bg-base-100 shadow border row-auto">
+              <div className="p-4">
                 <div className="mb-3 flex justify-between items-center">
                   <div>
                     <h2 className="text-xl">

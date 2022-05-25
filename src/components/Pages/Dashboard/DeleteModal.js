@@ -6,7 +6,7 @@ const DeleteModal = ({ deletingOrder, refetch, setDeletingOrder }) => {
   const { _id, name, toolsName } = deletingOrder;
 
   const handleDelete = () => {
-    fetch(`http://localhost:5000/orders/${_id}`, {
+    fetch(`https://peaceful-shelf-27425.herokuapp.com/orders/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -23,19 +23,23 @@ const DeleteModal = ({ deletingOrder, refetch, setDeletingOrder }) => {
   return (
     <div>
       {/* <!-- Put this part before </body> tag --> */}
-      <input type="checkbox" id="delete-confirm-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
+      <input
+        type="checkbox"
+        id="delete-confirm-modal"
+        className="modal-toggle"
+      />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
           <ExclamationCircleIcon className="h-12 w-12 text-red-500 mx-auto my-5" />
-          <h3 class="text-lg text-center">
+          <h3 className="text-lg text-center">
             Are You Sure want to Delete{" "}
             <strong className="font-bold ">{toolsName}</strong>
           </h3>
-          <p class="py-4 text-center">
+          <p className="py-4 text-center">
             After Deleting the order It will remove from your Order list.
           </p>
-          <div class="modal-action">
-            <label for="delete-confirm-modal" class="btn btn-sm px-4">
+          <div className="modal-action">
+            <label for="delete-confirm-modal" className="btn btn-sm px-4">
               Cancel
             </label>
             <label

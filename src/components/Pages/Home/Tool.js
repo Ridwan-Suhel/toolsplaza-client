@@ -18,7 +18,7 @@ const Tool = ({ tool }) => {
     navigate(`/purchase/${id}`);
   };
   return (
-    <div class="card w-full bg-base-100 shadow-xl border">
+    <div className="card w-full bg-base-100 shadow-xl border">
       <figure>
         <img
           src={image}
@@ -26,18 +26,20 @@ const Tool = ({ tool }) => {
           alt="Shoes"
         />
       </figure>
-      <div class="card-body">
-        <h2 class="card-title">
-          {name} <div class="badge badge-primary">NEW</div>
+      <div className="card-body">
+        <h2 className="card-title">
+          {name} <div className="badge badge-primary">NEW</div>
         </h2>
         <p>{description.slice(0, 65).concat("...")}</p>
         <p>Minimun Order: {minOrderQuantity}</p>
         <p className="text-lg">Unit Price: ${price}</p>
-        <div class="card-actions justify-end">
-          <div class="badge badge-outline">{availableQuantity} available</div>
+        <div className="card-actions justify-end">
+          <div className="badge badge-outline">
+            {availableQuantity} available
+          </div>
         </div>
-        <div class="card-actions justify-start">
-          <button onClick={() => handleClick(_id)} class="btn btn-primary">
+        <div className="card-actions justify-start">
+          <button onClick={() => handleClick(_id)} className="btn btn-primary">
             Purchase Now
           </button>
         </div>

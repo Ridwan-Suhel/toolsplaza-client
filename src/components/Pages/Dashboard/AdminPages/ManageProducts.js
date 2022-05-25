@@ -6,7 +6,7 @@ import DeleteManagePrModal from "./DeleteManagePrModal";
 
 const ManageProducts = () => {
   const [deletingTool, setDeletingTool] = useState(null);
-  const url = `http://localhost:5000/tools`;
+  const url = `https://peaceful-shelf-27425.herokuapp.com/tools`;
   const {
     isLoading,
     data: tools,
@@ -22,8 +22,8 @@ const ManageProducts = () => {
       <h2 className="text-xl text-primary ">Manage all Products</h2>
 
       <div className="manage-orders-wrapper mt-5">
-        <div class="overflow-x-auto">
-          <table class="table w-full">
+        <div className="overflow-x-auto">
+          <table className="table w-full">
             {/* <!-- head --> */}
             <thead>
               <tr>

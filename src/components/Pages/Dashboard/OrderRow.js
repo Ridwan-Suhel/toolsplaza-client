@@ -22,8 +22,8 @@ const OrderRow = ({ order, index, refetch, setDeletingOrder }) => {
     <tr>
       <th>{index + 1}</th>
       <td>
-        <div class="avatar">
-          <div class="mask mask-squircle w-12 h-12">
+        <div className="avatar">
+          <div className="mask mask-squircle w-12 h-12">
             <img src={image} alt={toolsName} />
           </div>
         </div>

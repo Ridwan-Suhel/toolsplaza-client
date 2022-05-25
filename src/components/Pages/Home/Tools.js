@@ -8,12 +8,12 @@ const Tools = () => {
   const [tools, setTools] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/tools")
+    fetch("https://peaceful-shelf-27425.herokuapp.com/tools")
       .then((res) => res.json())
       .then((data) => setTools(data.slice(0, 6)));
   }, []);
 
-  // const url = `http://localhost:5000/tools`;
+  // const url = `https://peaceful-shelf-27425.herokuapp.com/tools`;
   // const {
   //   data: tools,
   //   isLoading,
@@ -23,7 +23,7 @@ const Tools = () => {
   // if (isLoading) {
   //   return (
   //     <div className="my-20 text-center">
-  //       <button class="btn btn-square loading"></button>
+  //       <button className="btn btn-square loading"></button>
   //     </div>
   //   );
   // }

@@ -9,7 +9,7 @@ const OrderRow = ({ index, order, refetch, setDeletingOrder }) => {
     status: "Shipped",
   };
 
-  const url = `http://localhost:5000/order/${_id}`;
+  const url = `https://peaceful-shelf-27425.herokuapp.com/order/${_id}`;
   const handlePending = () => {
     fetch(url, {
       method: "PUT",
@@ -34,8 +34,8 @@ const OrderRow = ({ index, order, refetch, setDeletingOrder }) => {
     <tr>
       <th>{index + 1}</th>
       <td>
-        <div class="avatar">
-          <div class="mask mask-squircle w-12 h-12">
+        <div className="avatar">
+          <div className="mask mask-squircle w-12 h-12">
             <img src={image} alt={toolsName} />
           </div>
         </div>

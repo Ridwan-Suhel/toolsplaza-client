@@ -58,11 +58,6 @@ const Review = ({ review }) => {
         <p>{reviews}</p>
         <h2 className="card-title">{ratingStar}</h2>
         <h2 className="">({rating} - star)</h2>
-        {/* <div className="avatar">
-          <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src="https://api.lorem.space/image/face?hash=3174" />
-          </div>
-        </div> */}
       </div>
     </div>
   );

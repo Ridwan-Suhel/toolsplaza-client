@@ -11,10 +11,10 @@ const OfficeContact = () => {
             <div className="title mb-8 text-neutral">
               <h2 className="text-4xl">Our Office Location</h2>
               <p className="text-xl  mt-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-                voluptas ipsa recusandae repudiandae voluptate beatae. Quae
-                voluptas ipsa recusandae repudiandae voluptate beatae.Quae
-                voluptas ipsa recusandae
+                Our office is based in Dhaka bangladesh which is near the
+                Bangladesh pearlamnet house beside the beautiful buriganga
+                river. This is our headofiice please contact us if have any
+                query.
               </p>
             </div>
             <div className="location-wrapper">

@@ -9,7 +9,7 @@ const OrderRow = ({ index, order, refetch, setDeletingOrder }) => {
     status: "Shipped",
   };
 
-  const url = `https://peaceful-shelf-27425.herokuapp.com/order/${_id}`;
+  const url = `http://localhost:5000/order/${_id}`;
   const handlePending = () => {
     fetch(url, {
       method: "PUT",

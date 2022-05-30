@@ -8,12 +8,12 @@ const Tools = () => {
   const [tools, setTools] = useState([]);
 
   useEffect(() => {
-    fetch("https://peaceful-shelf-27425.herokuapp.com/tools")
+    fetch("http://localhost:5000/tools")
       .then((res) => res.json())
       .then((data) => setTools(data.slice(0, 6)));
   }, []);
 
-  // const url = `https://peaceful-shelf-27425.herokuapp.com/tools`;
+  // const url = `http://localhost:5000/tools`;
   // const {
   //   data: tools,
   //   isLoading,

@@ -12,7 +12,7 @@ const CheckoutForm = ({ data }) => {
   const { price, name, email, _id } = data;
 
   useEffect(() => {
-    fetch("https://peaceful-shelf-27425.herokuapp.com/create-payment-intent", {
+    fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -82,7 +82,7 @@ const CheckoutForm = ({ data }) => {
       };
 
       //patch/update data for payment info
-      fetch(`https://peaceful-shelf-27425.herokuapp.com/orders/order/${_id}`, {
+      fetch(`http://localhost:5000/orders/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

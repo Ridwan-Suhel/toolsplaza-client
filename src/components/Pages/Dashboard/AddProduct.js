@@ -13,9 +13,7 @@ const AddProduct = () => {
   } = useForm();
 
   const { data: services, isLoading } = useQuery("services", () =>
-    fetch("https://peaceful-shelf-27425.herokuapp.com/tools").then((res) =>
-      res.json()
-    )
+    fetch("http://localhost:5000/tools").then((res) => res.json())
   );
 
   const imageStorageKey = "ce950de04ec24100b4296e5837ff26c5";
@@ -42,7 +40,7 @@ const AddProduct = () => {
             image: img,
           };
           // sending to database
-          fetch("https://peaceful-shelf-27425.herokuapp.com/tools", {
+          fetch("http://localhost:5000/tools", {
             method: "POST",
             headers: {
               "content-type": "application/json",

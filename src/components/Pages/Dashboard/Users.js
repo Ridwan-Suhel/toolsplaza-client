@@ -9,7 +9,7 @@ const Users = () => {
     data: users,
     refetch,
   } = useQuery("users", () =>
-    fetch("https://peaceful-shelf-27425.herokuapp.com/user", {
+    fetch("http://localhost:5000/user", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -39,7 +39,7 @@ const Users = () => {
             </thead>
             <tbody>
               {/* <!-- row 1 --> */}
-              {users?.map((user, index) => (
+              {users.map((user, index) => (
                 <UserRow
                   key={user._id}
                   user={user}

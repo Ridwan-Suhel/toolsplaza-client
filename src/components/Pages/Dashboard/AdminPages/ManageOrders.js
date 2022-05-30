@@ -5,22 +5,50 @@ import OrderRow from "./OrderRow";
 import DeleteOrderModal from "./DeleteOrderModal";
 const ManageOrders = () => {
   const [deletingOrder, setDeletingOrder] = useState(null);
-  const url = `https://peaceful-shelf-27425.herokuapp.com/orders`;
+  const [searchTxt, setSearchTxt] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const url = `http://localhost:5000/orders?search=${searchValue}`;
+  // const url = `http://localhost:5000/orders`;
   const {
     isLoading,
     data: orders,
     refetch,
-  } = useQuery("orders", () => fetch(url).then((res) => res.json()));
+  } = useQuery(["orders", searchValue], () =>
+    fetch(url).then((res) => res.json())
+  );
 
   if (isLoading) {
     return <Loading></Loading>;
   }
+
+  const handleInputSearch = (e) => {
+    setSearchTxt(e.target.value);
+  };
+
+  const handleSearchBtn = () => {
+    setSearchValue(searchTxt);
+  };
+
   return (
     <div className="mt-5">
       <h2 className="text-xl text-primary ">Manage all orders</h2>
       <p>
         we have total <strong>{orders.length}</strong> orders.
       </p>
+
+      <div className="search-box mt-4">
+        <input
+          name="search"
+          onChange={handleInputSearch}
+          type="text"
+          placeholder="Search by Tools name"
+          class="input input-bordered input-primary w-full max-w-xs mr-3"
+        />
+        <button onClick={handleSearchBtn} className="btn btn-primary">
+          Search
+        </button>
+      </div>
+
       <div className="manage-orders-wrapper mt-5">
         <div className="overflow-x-auto">
           <table className="table w-full">

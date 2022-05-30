@@ -25,7 +25,7 @@ const Purchase = () => {
   } = useForm();
 
   const { id } = useParams();
-  const url = `https://peaceful-shelf-27425.herokuapp.com/tools/${id}`;
+  const url = `http://localhost:5000/tools/${id}`;
   const { isLoading, data: tools } = useQuery("tools", () =>
     fetch(url).then((res) => res.json())
   );
@@ -86,7 +86,7 @@ const Purchase = () => {
       status: "pending",
     };
 
-    fetch("https://peaceful-shelf-27425.herokuapp.com/orders", {
+    fetch("http://localhost:5000/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -106,7 +106,7 @@ const Purchase = () => {
     };
     console.log(newAvailableQuantity);
 
-    fetch(`https://peaceful-shelf-27425.herokuapp.com/tools/${id}`, {
+    fetch(`http://localhost:5000/tools/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

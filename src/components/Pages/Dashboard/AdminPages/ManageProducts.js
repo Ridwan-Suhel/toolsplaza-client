@@ -6,7 +6,7 @@ import DeleteManagePrModal from "./DeleteManagePrModal";
 
 const ManageProducts = () => {
   const [deletingTool, setDeletingTool] = useState(null);
-  const url = `https://peaceful-shelf-27425.herokuapp.com/tools`;
+  const url = `http://localhost:5000/tools`;
   const {
     isLoading,
     data: tools,

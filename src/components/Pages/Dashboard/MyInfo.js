@@ -8,7 +8,7 @@ const MyInfo = () => {
   const [user, loading, error] = useAuthState(auth);
 
   const email = user?.email;
-  const url = `http://localhost:5000/userinfo/${email}`;
+  const url = `https://peaceful-shelf-27425.herokuapp.com/userinfo/${email}`;
   const {
     isLoading,
     data: userInfo,

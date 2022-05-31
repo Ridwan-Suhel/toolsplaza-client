@@ -3,12 +3,14 @@ import { useQuery } from "react-query";
 import Loading from "../../../Shared/Loading/Loading";
 import OrderRow from "./OrderRow";
 import DeleteOrderModal from "./DeleteOrderModal";
+import "../Dashboard.css";
 const ManageOrders = () => {
   const [deletingOrder, setDeletingOrder] = useState(null);
   const [searchTxt, setSearchTxt] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  const url = `http://localhost:5000/orders?search=${searchValue}`;
-  // const url = `http://localhost:5000/orders`;
+  const url = `https://peaceful-shelf-27425.herokuapp.com/orders?search=${searchValue}`;
+
+  // const url = `https://peaceful-shelf-27425.herokuapp.com/orders`;
   const {
     isLoading,
     data: orders,
@@ -50,7 +52,7 @@ const ManageOrders = () => {
       </div>
 
       <div className="manage-orders-wrapper mt-5">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto custom-scroll-x">
           <table className="table w-full">
             {/* <!-- head --> */}
             <thead>

@@ -34,7 +34,7 @@ const MyInfoUpdateForm = () => {
       photoURL: user?.photoURL,
     };
 
-    fetch(`http://localhost:5000/userinfo/${email}`, {
+    fetch(`https://peaceful-shelf-27425.herokuapp.com/userinfo/${email}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

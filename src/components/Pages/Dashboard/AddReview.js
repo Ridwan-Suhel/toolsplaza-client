@@ -17,7 +17,7 @@ const AddReview = () => {
       rating: data.ratingNumber,
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://peaceful-shelf-27425.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

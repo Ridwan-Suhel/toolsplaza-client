@@ -12,7 +12,7 @@ const Payment = () => {
     "pk_test_51L0rPMGUlBGybeRPaOihAR4XRTQ1eW3WNpgJ9hT6dOqSdXBR122t5aKdoPvUedhcBJKtMeMQkZv9Gm9E5wI2n2rA00UGMYmRE4"
   );
 
-  const url = `http://localhost:5000/orders/order/${id}`;
+  const url = `https://peaceful-shelf-27425.herokuapp.com/orders/order/${id}`;
   const { isLoading, data } = useQuery(["data", id], () =>
     fetch(url).then((res) => res.json())
   );

@@ -3,14 +3,15 @@ import { useQuery } from "react-query";
 import Loading from "../../../Shared/Loading/Loading";
 import ProductRow from "./ProductRow";
 import DeleteManagePrModal from "./DeleteManagePrModal";
+import "../Dashboard.css";
 
 const ManageProducts = () => {
   const [deletingTool, setDeletingTool] = useState(null);
   // const [tools, setTools] = useState([]);
   const [searchTxt, setSearchTxt] = useState("");
   const [searchTxtValue, setSearchTxtValue] = useState("");
-  // const url = `http://localhost:5000/tools`;
-  const url = `http://localhost:5000/tools?search=${searchTxtValue}`;
+  // const url = `https://peaceful-shelf-27425.herokuapp.com/tools`;
+  const url = `https://peaceful-shelf-27425.herokuapp.com/searchtools?search=${searchTxtValue}`;
   const {
     isLoading,
     data: tools,
@@ -53,8 +54,8 @@ const ManageProducts = () => {
         </button>
       </div>
 
-      <div className="manage-orders-wrapper mt-5">
-        <div className="overflow-x-auto">
+      <div className="manage-products-wrapper mt-5">
+        <div className="overflow-x-auto custom-scroll-x">
           <table className="table w-full">
             {/* <!-- head --> */}
             <thead>

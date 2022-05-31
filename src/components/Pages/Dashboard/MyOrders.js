@@ -15,7 +15,7 @@ const MyOrders = () => {
 
   const email = user?.email;
 
-  const url = `http://localhost:5000/orders/${email}`;
+  const url = `https://peaceful-shelf-27425.herokuapp.com/orders/${email}`;
   // useEffect(() => {
   //   fetch(url)
   //     .then((res) => res.json())

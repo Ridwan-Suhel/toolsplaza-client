@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import auth from "../../../firebase.init";
 import useAdmin from "../../../hooks/useAdmin";
+import "./Dashboard.css";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
@@ -10,7 +11,7 @@ const Dashboard = () => {
   return (
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content bg-base-100 px-4">
+      <div className="drawer-content bg-base-100 px-4 custom-scroll">
         {/* <!-- Page content here --> */}
 
         <Outlet />

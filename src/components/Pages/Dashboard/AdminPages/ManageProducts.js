@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../../../Shared/Loading/Loading";
 import ProductRow from "./ProductRow";
@@ -6,20 +6,52 @@ import DeleteManagePrModal from "./DeleteManagePrModal";
 
 const ManageProducts = () => {
   const [deletingTool, setDeletingTool] = useState(null);
-  const url = `http://localhost:5000/tools`;
+  // const [tools, setTools] = useState([]);
+  const [searchTxt, setSearchTxt] = useState("");
+  const [searchTxtValue, setSearchTxtValue] = useState("");
+  // const url = `http://localhost:5000/tools`;
+  const url = `http://localhost:5000/tools?search=${searchTxtValue}`;
   const {
     isLoading,
     data: tools,
     refetch,
-  } = useQuery("orders", () => fetch(url).then((res) => res.json()));
+  } = useQuery(["tools", searchTxtValue], () =>
+    fetch(url).then((res) => res.json())
+  );
+
+  // useEffect(() => {
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => setTools(data));
+  // }, [url]);
 
   if (isLoading) {
     return <Loading></Loading>;
   }
 
+  const handleInputSearch = (e) => {
+    setSearchTxt(e.target.value);
+  };
+  const handleSearchBtn = () => {
+    setSearchTxtValue(searchTxt);
+  };
+
   return (
     <div className="mt-5">
       <h2 className="text-xl text-primary ">Manage all Products</h2>
+
+      <div className="search-box mt-4">
+        <input
+          name="search"
+          onChange={handleInputSearch}
+          type="text"
+          placeholder="Search by Tools name"
+          class="input input-bordered input-primary w-full max-w-xs mr-3"
+        />
+        <button onClick={handleSearchBtn} className="btn btn-primary">
+          Search
+        </button>
+      </div>
 
       <div className="manage-orders-wrapper mt-5">
         <div className="overflow-x-auto">

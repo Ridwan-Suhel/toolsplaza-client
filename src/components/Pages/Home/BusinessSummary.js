@@ -4,6 +4,8 @@ import icon2 from "../../../image/icon-2.png";
 import icon3 from "../../../image/icon-3.png";
 import icon4 from "../../../image/icon-4.png";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
+import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
 
 const BusinessSummary = () => {
   return (
@@ -26,7 +28,14 @@ const BusinessSummary = () => {
                 />
               </div>
               <p className="text-3xl md:text-4xl mt-4 md:mt-8 mb-2 text-primary font-bold">
-                245+
+                {/* <CountUp duration={5} end={245} suffix={"+"}></CountUp> */}
+                <CountUp duration={2} end={245} suffix={"+"} redraw={true}>
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp>
               </p>
               <p className="text-lg md:text-2xl">Products</p>
             </div>
@@ -40,7 +49,13 @@ const BusinessSummary = () => {
                 />
               </div>
               <p className="text-3xl md:text-4xl mt-4 md:mt-8 mb-2 text-primary font-bold">
-                67+
+                <CountUp duration={2} end={67} suffix={"+"} redraw={true}>
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp>
               </p>
               <p className="text-lg md:text-2xl">Partners</p>
             </div>
@@ -54,7 +69,20 @@ const BusinessSummary = () => {
                 />
               </div>
               <p className="text-3xl md:text-4xl mt-4 md:mt-8 mb-2 text-primary font-bold">
-                14.5M
+                <CountUp duration={2} end={47} suffix={"."} redraw={true}>
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp>
+                <CountUp duration={2} end={5} suffix={"M"} redraw={true}>
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp>
               </p>
               <p className="text-lg md:text-2xl">Global Users</p>
             </div>
@@ -68,7 +96,13 @@ const BusinessSummary = () => {
                 />
               </div>
               <p className="text-3xl md:text-4xl mt-4 md:mt-8 mb-2 text-primary font-bold">
-                65%
+                <CountUp duration={2} end={65} suffix={"%"} redraw={true}>
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp>
               </p>
               <p className="text-lg md:text-2xl">Market Demands</p>
             </div>

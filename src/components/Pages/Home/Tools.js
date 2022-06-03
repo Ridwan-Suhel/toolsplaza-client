@@ -6,11 +6,17 @@ import Tool from "./Tool";
 
 const Tools = () => {
   const [tools, setTools] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    fetch("https://peaceful-shelf-27425.herokuapp.com/tools")
+  const callData = async () => {
+    await fetch("https://peaceful-shelf-27425.herokuapp.com/tools")
       .then((res) => res.json())
       .then((data) => setTools(data.slice(0, 6)));
+    setIsLoading(true);
+  };
+
+  useEffect(() => {
+    callData();
   }, []);
 
   // const url = `https://peaceful-shelf-27425.herokuapp.com/tools`;
@@ -41,9 +47,15 @@ const Tools = () => {
         <div className="tools-wrapper">
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:grid-cols-2 gap-4">
             {/* single card  */}
-            {tools.map((tool) => (
-              <Tool key={tool._id} tool={tool} />
-            ))}
+            {isLoading ? (
+              tools.map((tool) => <Tool key={tool._id} tool={tool} />)
+            ) : (
+              <div className="mb-16 relative col-span-3 ">
+                <button class="btn loading absolute top-0 translate-x-[-50%] left-1/2">
+                  loading
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

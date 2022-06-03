@@ -5,11 +5,17 @@ import Review from "./Review";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    fetch("https://peaceful-shelf-27425.herokuapp.com/reviews")
+  const callData = async () => {
+    await fetch("https://peaceful-shelf-27425.herokuapp.com/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
+    setIsLoading(true);
+  };
+
+  useEffect(() => {
+    callData();
   }, []);
 
   return (
@@ -30,9 +36,17 @@ const Reviews = () => {
         />
         <div className="reviews-wrapper">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {reviews.map((review) => (
-              <Review review={review} key={review._id} />
-            ))}
+            {isLoading ? (
+              reviews.map((review) => (
+                <Review review={review} key={review._id} />
+              ))
+            ) : (
+              <div className="mb-16 relative col-span-2 ">
+                <button class="btn loading absolute top-0 translate-x-[-50%] left-1/2">
+                  loading
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

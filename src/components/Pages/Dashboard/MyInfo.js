@@ -24,7 +24,7 @@ const MyInfo = () => {
   };
 
   return (
-    <div className="card w-full bg-base-100 shadow-xl border ">
+    <div className="card w-full bg-base-100 shadow-md border ">
       <div className="p-4">
         <div className="md:flex md:justify-between md:items-center">
           <h2 className="text-2xl mb-4">My Info</h2>
@@ -65,7 +65,9 @@ const MyInfo = () => {
           </div>
         ) : (
           <div className="mt-5">
-            <h2 className="text-xl text-error">Please Update Your profile</h2>
+            <h2 className="text-xl text-rose-700">
+              Please Update Your profile.
+            </h2>
           </div>
         )}
       </div>

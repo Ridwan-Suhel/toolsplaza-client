@@ -1,3 +1,11 @@
+import {
+  CogIcon,
+  CubeIcon,
+  CubeTransparentIcon,
+  LibraryIcon,
+  SparklesIcon,
+  UserCircleIcon,
+} from "@heroicons/react/solid";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink, Outlet } from "react-router-dom";
@@ -42,15 +50,24 @@ const Dashboard = () => {
             )}
           </div>
           <li>
-            <Link to="/dashboard">My Profile</Link>
+            <Link to="/dashboard">
+              <UserCircleIcon className="h-7 w-7 text-neutral"></UserCircleIcon>
+              My Profile
+            </Link>
           </li>
           {!admin && (
             <>
               <li>
-                <NavLink to="/dashboard/myorders">My Orders</NavLink>
+                <NavLink to="/dashboard/myorders">
+                  <CubeIcon className="h-7 w-7 text-neutral" />
+                  My Orders
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/addreview">Add Review</NavLink>
+                <NavLink to="/dashboard/addreview">
+                  <SparklesIcon className="h-7 w-7 text-neutral" />
+                  Add Review
+                </NavLink>
               </li>
             </>
           )}
@@ -58,18 +75,26 @@ const Dashboard = () => {
           {admin && (
             <>
               <li>
-                <NavLink to="/dashboard/users">Make Admin</NavLink>
+                <NavLink to="/dashboard/users">
+                  <LibraryIcon className="h-7 w-7 text-neutral" />
+                  Make Admin
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/addproduct">Add Product</NavLink>
+                <NavLink to="/dashboard/addproduct">
+                  <CubeIcon className="h-7 w-7 text-neutral" />
+                  Add Product
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manageorders">
+                  <CubeTransparentIcon className="h-7 w-7 text-neutral" />
                   Manage All Orders
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manageoproducts">
+                  <CogIcon className="h-7 w-7 text-neutral" />
                   Manage Products
                 </NavLink>
               </li>

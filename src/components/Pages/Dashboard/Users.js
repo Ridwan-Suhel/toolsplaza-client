@@ -39,7 +39,7 @@ const Users = () => {
             </thead>
             <tbody>
               {/* <!-- row 1 --> */}
-              {users.map((user, index) => (
+              {users?.map((user, index) => (
                 <UserRow
                   key={user._id}
                   user={user}

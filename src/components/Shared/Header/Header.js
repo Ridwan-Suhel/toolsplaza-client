@@ -60,7 +60,7 @@ const Header = () => {
   //   return <Loading />;
   // }
   return (
-    <header className="border-b">
+    <header className="border-b sticky top-0 bg-white/[.6] relative z-10 backdrop-blur-[20px] backdrop-saturate-[180%]">
       <div className="container mx-auto">
         <div className="navbar ">
           <div className="navbar-start lg:w-1/4">

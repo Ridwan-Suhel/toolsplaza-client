@@ -37,7 +37,7 @@ const AddReview = () => {
     <section className="py-10">
       <div className="container ">
         <div className="flex min-h-screen items-center justify-center">
-          <div className="card lg:w-5/12 bg-base-100 shadow-xl border">
+          <div className="card w-full md:w-7/12 bg-base-100 shadow-xl border">
             <div className="card-body">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <h2 className="text-2xl text-center mb-5">

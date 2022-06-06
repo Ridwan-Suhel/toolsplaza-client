@@ -26,7 +26,7 @@ const MyInfo = () => {
   return (
     <div className="card w-full bg-base-100 shadow-md border ">
       <div className="p-4">
-        <div className="md:flex md:justify-between md:items-center">
+        <div className="md:flex md:justify-between md:items-center mb-4 md:mb-0">
           <h2 className="text-2xl mb-4">My Info</h2>
           <button
             onClick={() => handleRefresh()}

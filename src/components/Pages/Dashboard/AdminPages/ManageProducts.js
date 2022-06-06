@@ -47,7 +47,7 @@ const ManageProducts = () => {
           onChange={handleInputSearch}
           type="text"
           placeholder="Search by Tools name"
-          class="input input-bordered input-primary w-full max-w-xs mr-3"
+          class="input input-bordered input-primary w-full max-w-xs mb-4 md:mb-0 mr-0 md:mr-3"
         />
         <button onClick={handleSearchBtn} className="btn btn-primary">
           Search

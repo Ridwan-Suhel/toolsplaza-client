@@ -8,7 +8,7 @@ const MyPortfolio = () => {
     <section className="py-10">
       <div className="container px-4 mx-auto">
         <div className="portfolio-top mt-10">
-          <h1 className="text-3xl md:text-5xl text-center leading-tight ">
+          <h1 className="text-3xl md:text-5xl text-left md:text-center leading-tight ">
             Ridwan Suhel <br className="hidden lg:block" /> Frond-End Web
             Developer
             <br className="hidden lg:block" /> Based In Bangladesh
@@ -86,8 +86,10 @@ const MyPortfolio = () => {
 
         <div className="portfolio-bottom mt-20">
           <div>
-            <p className="text-gray-400 mb-4 text-center text-xl">Projects</p>
-            <h1 className="text-xl text-center ">
+            <p className="text-gray-400 mb-4 text-left md:text-center text-xl">
+              Projects
+            </p>
+            <h1 className="text-xl text-left md:text-center ">
               My Recent works That I love to Show.
             </h1>
           </div>

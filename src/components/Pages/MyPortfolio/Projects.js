@@ -8,7 +8,11 @@ const Projects = () => {
   return (
     <div className="grid gap-4 lg:grid-cols-3 md:grid-cols-2">
       {/* single-card  */}
-      <Link to="https://gadgetly-3045d.web.app/">
+      <a
+        href="https://gadgetly-3045d.web.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div className="rounded single-card w-full bg-base-100 shadow border border-primary">
           <figure className="card-top">
             <img src={project1} alt="Gadgetly" />
@@ -25,9 +29,13 @@ const Projects = () => {
             </p>
           </div>
         </div>
-      </Link>
+      </a>
       {/* single-card  */}
-      <Link to="https://tutorplus-5456d.web.app/">
+      <a
+        href="https://tutorplus-5456d.web.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div className="rounded single-card w-full bg-base-100 shadow border border-primary">
           <figure className="card-top">
             <img src={project2} alt="Tutorplus" />
@@ -45,9 +53,13 @@ const Projects = () => {
             </p>
           </div>
         </div>
-      </Link>
+      </a>
       {/* single-card  */}
-      <Link to="https://ridwan-suhel.github.io/maEng/">
+      <a
+        href="https://ridwan-suhel.github.io/maEng/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div className="rounded single-card w-full bg-base-100 shadow border border-primary">
           <figure className="card-top">
             <img src={project3} alt="Tutorplus" />
@@ -64,7 +76,7 @@ const Projects = () => {
             </p>
           </div>
         </div>
-      </Link>
+      </a>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const Blog = () => {
           </p>
         </div>
 
-        <div className="single-box border p-5 w-3/4 mx-auto rounded-lg shadow mb-3">
+        <div className="single-box border p-5 md:w-3/4 mx-auto rounded-lg shadow mb-3">
           <li className="text-xl mb-3">
             How will you improve the performance of a React Application?
           </li>
@@ -23,7 +23,7 @@ const Blog = () => {
             fetching data and more.
           </p>
         </div>
-        <div className="single-box border p-5 w-3/4 mx-auto rounded-lg shadow mb-3">
+        <div className="single-box border p-5 md:w-3/4 mx-auto rounded-lg shadow mb-3">
           <li className="text-xl mb-3">
             What are the different ways to manage a state in a React
             application?
@@ -38,7 +38,7 @@ const Blog = () => {
             pathname and query parameters.
           </p>
         </div>
-        <div className="single-box border p-5 w-3/4 mx-auto rounded-lg shadow mb-3">
+        <div className="single-box border p-5 md:w-3/4 mx-auto rounded-lg shadow mb-3">
           <li className="text-xl mb-3">
             How does prototypical inheritance work?
           </li>
@@ -52,7 +52,7 @@ const Blog = () => {
             a reference pointer function.
           </p>
         </div>
-        <div className="single-box border p-5 w-3/4 mx-auto rounded-lg shadow mb-3">
+        <div className="single-box border p-5 md:w-3/4 mx-auto rounded-lg shadow mb-3">
           <li className="text-xl mb-3">
             What is a unit test? Why should write unit tests?
           </li>
@@ -66,7 +66,7 @@ const Blog = () => {
             Unit test make our debugging process easer.
           </p>
         </div>
-        <div className="single-box border p-5 w-3/4 mx-auto rounded-lg shadow mb-3">
+        <div className="single-box border p-5 md:w-3/4 mx-auto rounded-lg shadow mb-3">
           <li className="text-xl mb-3">
             You have an array of products. Each product has a name, price,
             description, etc. How will you implement a search to find products
@@ -78,7 +78,7 @@ const Blog = () => {
               let's say we want to find it by for loop &amp; below code is our
               array list
             </p>
-            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5">
+            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5 whitespace-pre-wrap">
               <code>
                 {`const products = [
                 { name: "I phone", price: 100 },
@@ -90,7 +90,7 @@ const Blog = () => {
             we can use a function to find it let say searchProducts and we can
             pass two parameters called products and SeacrhTxt and now we can use
             for loop for looping our every product
-            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5">
+            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5 whitespace-pre-wrap">
               <code>
                 {`const searchProducts = (products, SeacrhTxt) => {
                       for (const product of products){
@@ -100,11 +100,11 @@ const Blog = () => {
               </code>
             </pre>
             Now if we call our function
-            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5">
+            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5 whitespace-pre-wrap">
               <code>{`searchProducts(products)`}</code>
             </pre>
             Output will be all the list of our products array
-            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5">
+            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5 whitespace-pre-wrap">
               <code>
                 {`{name: 'I phone', price: 100}
                 {name: 'Xiomi', price: 100}
@@ -117,22 +117,22 @@ const Blog = () => {
             that means it will go through all of our single product list of
             array and it will search what we pass in our function second
             parameter.
-            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5">
+            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5 whitespace-pre-wrap break-words">
               <code>{`if(product.name.includes(SeacrhTxt)){
                         console.log(product.name);
                       }`}</code>
             </pre>
             Now we just have to call our function with our desire name
-            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5">
+            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5 whitespace-pre-wrap">
               <code>{`searchProducts(products, "Samsung");`}</code>
             </pre>
             Then Output will be
-            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5">
+            <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5 whitespace-pre-wrap">
               <code>{`Samsung`}</code>
             </pre>
             here is the full snippet:
             <div>
-              <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5">
+              <pre className="mb-3 mt-3 text-[#00DB00] bg-[#333333] px-4 py-5 whitespace-pre-wrap break-words">
                 <code>
                   {`const products = [
     {name :"I phone", price: 100},

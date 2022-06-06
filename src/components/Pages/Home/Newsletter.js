@@ -14,16 +14,16 @@ const Newsletter = () => {
             </div>
             <div className="mt-10">
               <form action="">
-                <div className="text-center bg-white lg:w-[470px] p-1 sm:p-2 mx-auto rounded">
+                <div className="pt-5 pb-5 md:pt-4 p-1 md:pb-0 text-center bg-white lg:w-[470px] mx-auto rounded">
                   <input
                     type="text"
                     placeholder="Type Email"
-                    className="input sm:w-full max-w-xs text-neutral mr-4"
+                    className="w-full md:max-w-xs mb-4 border md:border-0 border-current border-solid input text-neutral mr-4"
                   />
                   <input
                     type="submit"
                     value="Subscribe"
-                    className="btn btn-primary px-4"
+                    className="btn btn-primary px-4 w-full md:w-auto"
                   />
                 </div>
               </form>

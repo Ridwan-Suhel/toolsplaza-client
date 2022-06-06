@@ -17,7 +17,7 @@ const Banner = () => {
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-white lg:w-2/3">
               <p className="text-lg text-secondary">BORN TO ROAR...</p>
-              <h1 className="text-5xl font-bold">
+              <h1 className="text-3xl md:text-5xl font-bold">
                 ToolsPlaza More Than a Products.{" "}
               </h1>
               <p className="py-6 text-lg">
